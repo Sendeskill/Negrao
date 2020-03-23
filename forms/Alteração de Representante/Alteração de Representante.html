@@ -1,39 +1,143 @@
 <html>
 <head>
+    <link type="text/css" rel="stylesheet" href="./style.css"/>
     <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
     <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
     <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script src="script.js"></script>
 </head>
 <body>
 
 <div class="fluig-style-guide">
     <form name="form" role="form">
-        <div class="panel panel-default">
-            <div class="panel panel-heading">
-                <h3 class="panel-title">Indicação de Representante</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <label for="contatos_descritivo">Descritivo</label>
-                    <input type="text" name="contatos_descritivo" id="contatos_descritivo"
-                           class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel panel-heading">
-                <h3 class="panel-title">Avaliação do Representante</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
+        <!-- Link das Tabs	-->
+        <div class="container-fluid" id="container-form">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <!-- Lista de Tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li><a href="#tab_representante" id="toggle_representante" data-toggle="tab">Representante</a>
+                        </li>
+                        <li><a href="#tab_empresa" id="toggle_empresa" data-toggle="tab">Empresa</a></li>
+                        <li><a href="#tab_dados" id="toggle_dados" data-toggle="tab">Outros Dados</a></li>
+                    </ul>
+                    <!-- FIM :: Lista de Tabs -->
+                    <!-- Conteudo das Tabs -->
+                    <div class="tab-content">
+                        <!-- Tab Indicação de Representante -->
+                        <div id="tab_representante" class="tab-pane active">
+                            <div class="panel panel-default">
+                                <div class="panel panel-heading">
+                                    <h3 class="panel-title">Representante</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="custom-checkbox custom-checkbox-primary">
+                                        <label for="representante_att_contato">Atualizar contatos</label>
+                                        <input type="checkbox" name="representante_att_contato"
+                                               id="representante_att_contato"
+                                               class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label for="representante_att_email">E-mail</label>
+                                        <input type="text" name="representante_att_email" id="representante_att_email"
+                                               class="form-control">
+                                    </div>
+                                    <div class="row">
+                                        <label for="representante_att_telefone">Telefone</label>
+                                        <input type="text" name="representante_att_telefone"
+                                               id="representante_att_telefone"
+                                               class="form-control" mask="(00)00000-0000">
+                                        <label for="representante_att_cel">Celular</label>
+                                        <input type="text" name="representante_att_cel" id="representante_att_cel"
+                                               class="form-control" mask="(00)00000-0000">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel panel-heading">
+                                    <h3 class="panel-title">Atualização do CORE</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <label for="representante_att_core">Atualizar CORE do Represenatnte</label>
+                                        <input type="radio" name="representante_att_core" id="representante_att_core"
+                                               class="form-control">
+                                    </div>
+                                    <div class="row">
+                                        <label for="representante_num_core">Número CORE</label>
+                                        <input type="text" name="representante_num_core" id="representante_num_core"
+                                               class="form-control">
+                                        <label for="representante_uf_core"> UF CORE</label>
+                                        <input type="text" name="representante_uf_core" id="representante_uf_core"
+                                               class="form-control">
+                                    </div>
+                                    <div class="row">
+                                        <label for="representante_emissao_core">Emissão CORE</label>
+                                        <input type="text" name="representante_emissao_core"
+                                               id="representante_emissao_core"
+                                               class="form-control">
+                                        <label for="representante_validade_core">Validade CORE</label>
+                                        <input type="text" name="representante_validade_core"
+                                               id="representante_validade_core"
+                                               class="form-control">
+                                    </div>
+                                    <div class="row">
+                                        <label for="representante_btn_visu">Core do Representante</label>
+                                        <button class="btn btn-info" id="representante_btn_visu"
+                                                name="representante_btn_visu">Visualizar</button>
+                                        <label for="representante_btn_anexo">Core do Representante</label>
+                                        <button class="btn btn-info" id="representante_btn_anexo"
+                                                name="representante_btn_anexo">Anexar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel panel-heading">
+                                    <h3 class="panel-title">Avaliação de Corresponência</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIM :: Conteudo das Tabs -->
                 </div>
             </div>
         </div>
     </form>
 </div>
-
 </body>
 </html>
+
+
+<div class="panel panel-default">
+    <div class="panel panel-heading">
+        <h3 class="panel-title">Indicação de Representante</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <label for="contatos_descritivo">Descritivo</label>
+            <input type="text" name="contatos_descritivo" id="contatos_descritivo"
+                   class="form-control">
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel panel-heading">
+        <h3 class="panel-title">Avaliação do Representante</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+
+        </div>
+    </div>
+</div>
