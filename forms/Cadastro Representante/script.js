@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
-    escondeCampos();
+    hideAndShowFields();
 
-    if (CURRENT_STATE === 1 || CURRENT_STATE === 0){
+    if (CURRENT_STATE === 1 || CURRENT_STATE === 0) {
         $('#indicacao_btn_pesquisar').on('click', function () {
             const urlCNPJ = 'https://receitaws.com.br/v1/cnpj/34215820000112';
 
@@ -12,13 +12,13 @@ $(document).ready(function () {
                 cache: false,
                 method: 'GET',
                 dataType: 'json',
-                success: function(data) {
+                success: function (data) {
                     console.log(data);
                 }
             });
         });
 
-        $('#representante_cep').focusout(function () {
+        $('#representante_cep').on('focusout', function () {
             var cep = $('#representante_cep').val();
             cep = cep.replace('-', '');
 
@@ -28,20 +28,19 @@ $(document).ready(function () {
                 type: 'get',
                 dataType: 'json',
                 success: function (data) {
-                    console.log(data);
                     $('#representante_cidade').val(data.localidade);
                     $('#representante_rua').val(data.logradouro);
                     $('#representante_uf').val(data.uf);
-                    $('#representante_bairro').val(data.bairro);i8
+                    $('#representante_bairro').val(data.bairro); i8
 
                 },
                 error: function (erro) {
-                    console.log(erro)
+                    console.log(erro);
                 }
             });
         });
 
-        $('#empresa_cep').focusout(function () {
+        $('#empresa_cep').on('focusout', function () {
             var cep = $('#empresa_cep').val();
             cep = cep.replace('-', '');
 
@@ -64,7 +63,7 @@ $(document).ready(function () {
             });
         });
 
-        $('#avaliacao_cep').focusout(function () {
+        $('#avaliacao_cep').on('focusout', function () {
             var cep = $('#avaliacao_cep').val();
             cep = cep.replace('-', '');
 
@@ -89,7 +88,15 @@ $(document).ready(function () {
     }
 });
 
-function escondeCampos() {
+function beforeSendValidate(currentStage, nextStage) {
+    var msg = "";
+
+    if (msg !== "") {
+        throw (msg);
+    }
+}
+
+function hideAndShowFields() {
     $('#toggle_representante').hide();
     $('#toggle_empresa').hide();
     $('#toggle_dados').hide();
