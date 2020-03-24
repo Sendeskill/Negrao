@@ -1,8 +1,9 @@
 $(document).ready(function () {
 
     hideAndShowFields();
+    triggerClick();
 
-    if (CURRENT_STATE === 1 || CURRENT_STATE === 0) {
+    if (CURRENT_STATE === 0) {
         $('#indicacao_btn_pesquisar').on('click', function () {
             const urlCNPJ = 'https://receitaws.com.br/v1/cnpj/34215820000112';
 
@@ -96,12 +97,18 @@ function beforeSendValidate(currentStage, nextStage) {
     }
 }
 
+function triggerClick() {
+    if (CURRENT_STATE === 0) {
+        $('#toggle_indicacao').trigger('click');
+    }
+}
+
 function hideAndShowFields() {
-    $('#toggle_representante').hide();
-    $('#toggle_empresa').hide();
-    $('#toggle_dados').hide();
-    $('#toggle_documentos').hide();
-    $('#toggle_contratos').hide();
+    // $('#toggle_representante').hide();
+    // $('#toggle_empresa').hide();
+    // $('#toggle_dados').hide();
+    // $('#toggle_documentos').hide();
+    // $('#toggle_contratos').hide();
 }
 
 
