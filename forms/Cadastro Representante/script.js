@@ -3,6 +3,10 @@ $(document).ready(function () {
     hideAndShowFields();
     triggerClick();
 
+    var myCalendar = FLUIGC.calendar('.date-picker', {
+        useCurrent: false
+    });
+
     if (CURRENT_STATE === 0) {
         $('#indicacao_btn_pesquisar').on('click', function () {
             const urlCNPJ = 'https://receitaws.com.br/v1/cnpj/34215820000112';
