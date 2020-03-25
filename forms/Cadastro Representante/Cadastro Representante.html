@@ -18,6 +18,8 @@
             <div class="container-fluid" id="container-form">
                 <div class="panel panel-default">
                     <div class="panel-body">
+
+                        <!-- APROVAÇÃO DE CADASTRO -->
                         <div class="row" id="row_aprova_cadastro" style="display: none;">
                             <input type="hidden" name="cadastro_aprovado">
                             <div class="col-md-3">
@@ -30,6 +32,18 @@
                             </div>
                             <br>
                         </div>
+                        <!-- FIM:: APROVAÇÃO DE CADASTRO -->
+
+                        <!-- APROVAÇÃO DO MD LOG -->
+                        <div class="row" id="row_aprova_mdlog" style="display: none;">
+                            <div class="custom-checkbox custom-checkbox-primary">
+                                <input name="mdlog_ok" type="checkbox" id="mdlog_ok">
+                                <label for="mdlog_ok">Cadastrado do MD-Log e Senior</label>
+                            </div>
+                            <br>
+                        </div>
+                        <!-- FIM:: APROVAÇÃO DO MD LOG -->
+
                         <ul class="nav nav-tabs" role="tablist">
                             <li><a href="#tab_indicacao" id="toggle_indicacao" data-toggle="tab">Indicação de
                                     Representante</a></li>

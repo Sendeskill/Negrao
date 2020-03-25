@@ -120,6 +120,10 @@ function beforeSendValidate(currentStage, nextStage) {
         if ($('input[name="cadastro_aprovado"]').val() === 'N') {
             msg += "É necessário aprovar o cadastro e os documentos para avançar.";
         }
+    } else if (CURRENT_STATE === 21) {
+        if ($('input[name="mdlog_ok"]').is(':checked') === false) {
+            msg += "É necessário verificar o cadastro no MD-Log e Senior";
+        }
     }
 
     if (msg !== "") {
@@ -150,6 +154,8 @@ function hideAndShowFields() {
         $('#toggle_contratos').hide();
     } else if (CURRENT_STATE === 12) {
         $('#row_aprova_cadastro').show();
+    } else if (CURRENT_STATE === 21) {
+        $('#row_aprova_mdlog').show();
     }
 }
 
