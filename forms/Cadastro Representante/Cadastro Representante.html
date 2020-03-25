@@ -18,6 +18,18 @@
             <div class="container-fluid" id="container-form">
                 <div class="panel panel-default">
                     <div class="panel-body">
+                        <div class="row" id="row_aprova_cadastro" style="display: none;">
+                            <input type="hidden" name="cadastro_aprovado">
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-success" id="btn_aprovar_cadastro">Aprovar Cadastro
+                                    e Documentos</button>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-danger" id="btn_recusa_cadastro">Recusar Cadastro
+                                    e Documentos</button>
+                            </div>
+                            <br>
+                        </div>
                         <ul class="nav nav-tabs" role="tablist">
                             <li><a href="#tab_indicacao" id="toggle_indicacao" data-toggle="tab">Indicação de
                                     Representante</a></li>

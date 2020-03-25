@@ -91,6 +91,14 @@ $(document).ready(function () {
         //         }
         //     });
         // });
+    } else if (CURRENT_STATE === 12) {
+        $('#btn_aprovar_cadastro').on('click', function() {
+            $('input[name="cadastro_aprovado"]').val('S');
+        });
+
+        $('#btn_recusa_cadastro').on('click', function() {
+            $('input[name="cadastro_aprovado"]').val('N');
+        });
     }
 });
 
@@ -105,6 +113,13 @@ function beforeSendValidate(currentStage, nextStage) {
         if ($('input[name="representante_selecionado"]').is(':checked') === false) {
             msg += "É necessário marcar o campo <strong>Representante Selecionado</strong>.";
         }
+    } else if (CURRENT_STATE === 12) {
+        if ($('input[name="cadastro_aprovado"]').val() == '') {
+            msg += "É necessário aprovar ou desaprovar o cadastro e os documentos.";
+        }
+        if ($('input[name="cadastro_aprovado"]').val() === 'N') {
+            msg += "É necessário aprovar o cadastro e os documentos para avançar.";
+        }
     }
 
     if (msg !== "") {
@@ -115,6 +130,8 @@ function beforeSendValidate(currentStage, nextStage) {
 function triggerClick() {
     if (CURRENT_STATE === 0) {
         $('#toggle_indicacao').trigger('click');
+    } else if (CURRENT_STATE === 6) {
+        $('#toggle_avaliacao').trigger('click');
     }
 }
 
@@ -131,6 +148,8 @@ function hideAndShowFields() {
         $('#toggle_dados').hide();
         $('#toggle_documentos').hide();
         $('#toggle_contratos').hide();
+    } else if (CURRENT_STATE === 12) {
+        $('#row_aprova_cadastro').show();
     }
 }
 
@@ -139,7 +158,3 @@ function disableAndEnableFields() {
         $('#selecionado_sim').attr('checked', true);
     }
 }
-
-
-
-
