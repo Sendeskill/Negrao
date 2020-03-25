@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_231" class="java.beans.XMLDecoder">
+ <object class="java.util.HashMap">
+  <void method="put">
+   <string>volume</string>
+   <array class="java.lang.String" length="1">
+    <void index="0">
+     <string>Default</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>expediente</string>
+   <array class="java.lang.String" length="1">
+    <void index="0">
+     <string>Default</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>mecanismo</string>
+   <array class="[Ljava.lang.Object;" length="9">
+    <void index="0">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Associação</string>
+      </void>
+      <void index="1">
+       <string>Associado</string>
+      </void>
+     </array>
+    </void>
+    <void index="1">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Campo de Formulário</string>
+      </void>
+      <void index="1">
+       <string>Campo Formulário</string>
+      </void>
+     </array>
+    </void>
+    <void index="2">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Executor de Atividade</string>
+      </void>
+      <void index="1">
+       <string>Executor Atividade</string>
+      </void>
+     </array>
+    </void>
+    <void index="3">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Grupo</string>
+      </void>
+      <void index="1">
+       <string>Grupo</string>
+      </void>
+     </array>
+    </void>
+    <void index="4">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Grupos do Colaborador</string>
+      </void>
+      <void index="1">
+       <string>Grupos Colaborador</string>
+      </void>
+     </array>
+    </void>
+    <void index="5">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Papel</string>
+      </void>
+      <void index="1">
+       <string>Papel</string>
+      </void>
+     </array>
+    </void>
+    <void index="6">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição para um Grupo</string>
+      </void>
+      <void index="1">
+       <string>Pool Grupo</string>
+      </void>
+     </array>
+    </void>
+    <void index="7">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição para um Papel</string>
+      </void>
+      <void index="1">
+       <string>Pool Papel</string>
+      </void>
+     </array>
+    </void>
+    <void index="8">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Usuário</string>
+      </void>
+      <void index="1">
+       <string>Usuário</string>
+      </void>
+     </array>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 1388</string>
+   <array class="java.lang.String" length="96">
+    <void index="0">
+     <string>avaliacao_abertura</string>
+    </void>
+    <void index="1">
+     <string>avaliacao_atividade</string>
+    </void>
+    <void index="2">
+     <string>avaliacao_bairro</string>
+    </void>
+    <void index="3">
+     <string>avaliacao_cep</string>
+    </void>
+    <void index="4">
+     <string>avaliacao_cidade</string>
+    </void>
+    <void index="5">
+     <string>avaliacao_cnpj</string>
+    </void>
+    <void index="6">
+     <string>avaliacao_complemento</string>
+    </void>
+    <void index="7">
+     <string>avaliacao_cpf</string>
+    </void>
+    <void index="8">
+     <string>avaliacao_email</string>
+    </void>
+    <void index="9">
+     <string>avaliacao_empresa</string>
+    </void>
+    <void index="10">
+     <string>avaliacao_logradouro</string>
+    </void>
+    <void index="11">
+     <string>avaliacao_natureza</string>
+    </void>
+    <void index="12">
+     <string>avaliacao_nome</string>
+    </void>
+    <void index="13">
+     <string>avaliacao_numero</string>
+    </void>
+    <void index="14">
+     <string>avaliacao_razao</string>
+    </void>
+    <void index="15">
+     <string>avaliacao_regiao</string>
+    </void>
+    <void index="16">
+     <string>avaliacao_situacao</string>
+    </void>
+    <void index="17">
+     <string>avaliacao_situacao2</string>
+    </void>
+    <void index="18">
+     <string>avaliacao_telefone</string>
+    </void>
+    <void index="19">
+     <string>avaliacao_telefone2</string>
+    </void>
+    <void index="20">
+     <string>avaliacao_uf</string>
+    </void>
+    <void index="21">
+     <string>contatos_descritivo</string>
+    </void>
+    <void index="22">
+     <string>contratos_contrato_comodato</string>
+    </void>
+    <void index="23">
+     <string>contratos_contrato_servico</string>
+    </void>
+    <void index="24">
+     <string>contratos_modelo_contrato</string>
+    </void>
+    <void index="25">
+     <string>contratos_modelo_servico</string>
+    </void>
+    <void index="26">
+     <string>contratos_nm_patrimonio</string>
+    </void>
+    <void index="27">
+     <string>contratos_nm_serie</string>
+    </void>
+    <void index="28">
+     <string>dados_agencia</string>
+    </void>
+    <void index="29">
+     <string>dados_banco</string>
+    </void>
+    <void index="30">
+     <string>dados_conta</string>
+    </void>
+    <void index="31">
+     <string>dados_cpf</string>
+    </void>
+    <void index="32">
+     <string>dados_crc</string>
+    </void>
+    <void index="33">
+     <string>dados_empresa</string>
+    </void>
+    <void index="34">
+     <string>dados_macro_regial</string>
+    </void>
+    <void index="35">
+     <string>dados_nome</string>
+    </void>
+    <void index="36">
+     <string>dados_operacao</string>
+    </void>
+    <void index="37">
+     <string>documentos_alvara_anexar</string>
+    </void>
+    <void index="38">
+     <string>documentos_alvara_visu</string>
+    </void>
+    <void index="39">
+     <string>documentos_bancaraio_visu</string>
+    </void>
+    <void index="40">
+     <string>documentos_bancario_anexar</string>
+    </void>
+    <void index="41">
+     <string>documentos_comprovante_anexar</string>
+    </void>
+    <void index="42">
+     <string>documentos_comprovante_visu</string>
+    </void>
+    <void index="43">
+     <string>documentos_contrato_anexar</string>
+    </void>
+    <void index="44">
+     <string>documentos_contrato_visu</string>
+    </void>
+    <void index="45">
+     <string>documentos_core_anexar</string>
+    </void>
+    <void index="46">
+     <string>documentos_core_visu</string>
+    </void>
+    <void index="47">
+     <string>documentos_empresa_anexar</string>
+    </void>
+    <void index="48">
+     <string>documentos_empresa_visu</string>
+    </void>
+    <void index="49">
+     <string>documentos_identificacao_anexa</string>
+    </void>
+    <void index="50">
+     <string>documentos_identificacao_visu</string>
+    </void>
+    <void index="51">
+     <string>documentos_solicitacao_anexar</string>
+    </void>
+    <void index="52">
+     <string>documentos_solicitacao_visu</string>
+    </void>
+    <void index="53">
+     <string>empresa_bairro</string>
+    </void>
+    <void index="54">
+     <string>empresa_cep</string>
+    </void>
+    <void index="55">
+     <string>empresa_cidade</string>
+    </void>
+    <void index="56">
+     <string>empresa_cnpj</string>
+    </void>
+    <void index="57">
+     <string>empresa_complemento</string>
+    </void>
+    <void index="58">
+     <string>empresa_emissao_core</string>
+    </void>
+    <void index="59">
+     <string>empresa_emi_alvara</string>
+    </void>
+    <void index="60">
+     <string>empresa_insc_municipal</string>
+    </void>
+    <void index="61">
+     <string>empresa_logradouro</string>
+    </void>
+    <void index="62">
+     <string>empresa_numero</string>
+    </void>
+    <void index="63">
+     <string>empresa_num_alvara</string>
+    </void>
+    <void index="64">
+     <string>empresa_num_core</string>
+    </void>
+    <void index="65">
+     <string>empresa_radio</string>
+    </void>
+    <void index="66">
+     <string>empresa_razao_social</string>
+    </void>
+    <void index="67">
+     <string>empresa_uf</string>
+    </void>
+    <void index="68">
+     <string>empresa_uf_core</string>
+    </void>
+    <void index="69">
+     <string>empresa_validade_core</string>
+    </void>
+    <void index="70">
+     <string>empresa_val_alvara</string>
+    </void>
+    <void index="71">
+     <string>indicacao_cnpj</string>
+    </void>
+    <void index="72">
+     <string>indicacao_cpf</string>
+    </void>
+    <void index="73">
+     <string>indicacao_email</string>
+    </void>
+    <void index="74">
+     <string>indicacao_empresa</string>
+    </void>
+    <void index="75">
+     <string>indicacao_regiao</string>
+    </void>
+    <void index="76">
+     <string>optante</string>
+    </void>
+    <void index="77">
+     <string>representante_bairro</string>
+    </void>
+    <void index="78">
+     <string>representante_celular</string>
+    </void>
+    <void index="79">
+     <string>representante_cep</string>
+    </void>
+    <void index="80">
+     <string>representante_cidade</string>
+    </void>
+    <void index="81">
+     <string>representante_complemento</string>
+    </void>
+    <void index="82">
+     <string>representante_cpf</string>
+    </void>
+    <void index="83">
+     <string>representante_email</string>
+    </void>
+    <void index="84">
+     <string>representante_emissao_core</string>
+    </void>
+    <void index="85">
+     <string>representante_logradouro</string>
+    </void>
+    <void index="86">
+     <string>representante_nascimento</string>
+    </void>
+    <void index="87">
+     <string>representante_nome</string>
+    </void>
+    <void index="88">
+     <string>representante_numero</string>
+    </void>
+    <void index="89">
+     <string>representante_num_core</string>
+    </void>
+    <void index="90">
+     <string>representante_org_expedidor</string>
+    </void>
+    <void index="91">
+     <string>representante_rg</string>
+    </void>
+    <void index="92">
+     <string>representante_telefone</string>
+    </void>
+    <void index="93">
+     <string>representante_uf</string>
+    </void>
+    <void index="94">
+     <string>representante_uf_core</string>
+    </void>
+    <void index="95">
+     <string>representante_validade_core</string>
+    </void>
+   </array>
+  </void>
+ </object>
+</java>

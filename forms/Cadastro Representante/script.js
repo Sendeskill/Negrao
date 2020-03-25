@@ -68,28 +68,28 @@ $(document).ready(function () {
             });
         });
 
-        $('#avaliacao_cep').on('focusout', function () {
-            var cep = $('#avaliacao_cep').val();
-            cep = cep.replace('-', '');
+        // $('#avaliacao_cep').on('focusout', function () {
+        //     var cep = $('#avaliacao_cep').val();
+        //     cep = cep.replace('-', '');
 
-            var urlstr = 'http://viacep.com.br/ws/' + cep + '/json/';
-            $.ajax({
-                url: urlstr,
-                type: 'get',
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                    $('#avaliacao_cidade').val(data.localidade);
-                    $('#avaliacao_rua').val(data.logradouro);
-                    $('#avaliacao_uf').val(data.uf);
-                    $('#avaliacao_bairro').val(data.bairro);
+        //     var urlstr = 'http://viacep.com.br/ws/' + cep + '/json/';
+        //     $.ajax({
+        //         url: urlstr,
+        //         type: 'get',
+        //         dataType: 'json',
+        //         success: function (data) {
+        //             console.log(data);
+        //             $('#avaliacao_cidade').val(data.localidade);
+        //             $('#avaliacao_rua').val(data.logradouro);
+        //             $('#avaliacao_uf').val(data.uf);
+        //             $('#avaliacao_bairro').val(data.bairro);
 
-                },
-                error: function (erro) {
-                    console.log(erro)
-                }
-            });
-        });
+        //         },
+        //         error: function (erro) {
+        //             console.log(erro)
+        //         }
+        //     });
+        // });
     }
 });
 
@@ -114,6 +114,7 @@ function hideAndShowFields() {
     // $('#toggle_documentos').hide();
     // $('#toggle_contratos').hide();
 }
+
 
 
 
