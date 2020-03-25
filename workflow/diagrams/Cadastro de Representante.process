@@ -3165,33 +3165,33 @@
     <fonts name="Arial" size="8"/>
     <fonts name="Arial" size="8" bold="true"/>
   </pi:Diagram>
-  <bpmn2:BpmnProcess id="CadastrodeRepresentante" name="Cadastro de Representante" serverId="Planning" version="2" author="" extendedFields="&lt;list/>" cardIndex="1388" formSource="server" category="" volume="Default" expedient="Default" instruction="" keyWord="" complementsLevel="1" notifyResponsibleComplements="true" notifyRequisitionerComplements="true"/>
+  <bpmn2:BpmnProcess id="CadastrodeRepresentante" name="Cadastro de Representante" serverId="Planning" version="2" author="" extendedFields="&lt;list/>" cardIndex="1397" formSource="server" category="Negr&#xe3;o" volume="Default" expedient="Default" instruction="" keyWord="" complementsLevel="1" notifyResponsibleComplements="true" notifyRequisitionerComplements="true"/>
   <bpmn2:BpmnStartEvent id="startevent1" name="In&#xed;cio" incoming="flow3 flow5" outgoing="flow7" type="10" signalId="0" expediente="" selecionaColaboradores="1" esforcoCalculo="0"/>
   <bpmn2:BpmnAnnotation id="annotationtask2" name="Indicar novo representante" outgoing="flow3" type="0"/>
-  <bpmn2:SequenceFlow id="flow3" name="" sourceRef="annotationtask2" targetRef="startevent1" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow3" name="" sourceRef="annotationtask2" targetRef="startevent1" atividadeFluxo="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnAnnotation id="annotationtask4" name="Consulta informa&#xe7;&#xf5;es na receita federal" outgoing="flow5" type="0"/>
-  <bpmn2:SequenceFlow id="flow5" name="" sourceRef="annotationtask4" targetRef="startevent1" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow5" name="" sourceRef="annotationtask4" targetRef="startevent1" atividadeFluxo="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnTask id="task6" name="Avaliar Representante " incoming="flow7" outgoing="flow9" type="80" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
-  <bpmn2:SequenceFlow id="flow7" name="" sourceRef="startevent1" targetRef="task6" atividadeFluxo=""/>
-  <bpmn2:BpmnGateway id="exclusivegateway8" name="Selecionado" incoming="flow9 flow16 flow18" outgoing="flow11 flow13" type="120" condition="&lt;list>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>1&lt;/order>&#xA;    &lt;expression>&lt;/expression>&#xA;    &lt;targetTask>endevent10&lt;/targetTask>&#xA;    &lt;conditionType>1&lt;/conditionType>&#xA;    &lt;rules/>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;&lt;/list>"/>
-  <bpmn2:SequenceFlow id="flow9" name="" sourceRef="task6" targetRef="exclusivegateway8" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow7" name="" sourceRef="startevent1" targetRef="task6" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
+  <bpmn2:BpmnGateway id="exclusivegateway8" name="Selecionado" incoming="flow9 flow16 flow18" outgoing="flow11 flow13" type="120" condition="&lt;list>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>1&lt;/order>&#xA;    &lt;expression>&lt;/expression>&#xA;    &lt;targetTask>endevent10&lt;/targetTask>&#xA;    &lt;conditionType>1&lt;/conditionType>&#xA;    &lt;rules>&#xA;      &lt;com.totvs.tds.ecm.workflow.model.ConditionProcessAutomaticRules>&#xA;        &lt;tenantId>0&lt;/tenantId>&#xA;        &lt;version>0&lt;/version>&#xA;        &lt;sequence>0&lt;/sequence>&#xA;        &lt;expressionOrder>1&lt;/expressionOrder>&#xA;        &lt;ruleOrder>1&lt;/ruleOrder>&#xA;        &lt;field>representante_selecionado&lt;/field>&#xA;        &lt;value>N&#xe3;o&lt;/value>&#xA;        &lt;operator>1&lt;/operator>&#xA;        &lt;valueType>1&lt;/valueType>&#xA;      &lt;/com.totvs.tds.ecm.workflow.model.ConditionProcessAutomaticRules>&#xA;    &lt;/rules>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;  &lt;org.eclipse.bpmn2.impl.ConditionImpl>&#xA;    &lt;order>2&lt;/order>&#xA;    &lt;expression>&lt;/expression>&#xA;    &lt;targetTask>task12&lt;/targetTask>&#xA;    &lt;conditionType>1&lt;/conditionType>&#xA;    &lt;rules>&#xA;      &lt;com.totvs.tds.ecm.workflow.model.ConditionProcessAutomaticRules>&#xA;        &lt;tenantId>0&lt;/tenantId>&#xA;        &lt;version>0&lt;/version>&#xA;        &lt;sequence>0&lt;/sequence>&#xA;        &lt;expressionOrder>2&lt;/expressionOrder>&#xA;        &lt;ruleOrder>1&lt;/ruleOrder>&#xA;        &lt;field>representante_selecionado&lt;/field>&#xA;        &lt;value>Sim&lt;/value>&#xA;        &lt;operator>1&lt;/operator>&#xA;        &lt;valueType>1&lt;/valueType>&#xA;      &lt;/com.totvs.tds.ecm.workflow.model.ConditionProcessAutomaticRules>&#xA;    &lt;/rules>&#xA;  &lt;/org.eclipse.bpmn2.impl.ConditionImpl>&#xA;&lt;/list>"/>
+  <bpmn2:SequenceFlow id="flow9" name="" sourceRef="task6" targetRef="exclusivegateway8" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnEndEvent id="endevent10" name="Fim" incoming="flow11" type="60" signalId="0"/>
-  <bpmn2:SequenceFlow id="flow11" name="" sourceRef="exclusivegateway8" targetRef="endevent10" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow11" name="" sourceRef="exclusivegateway8" targetRef="endevent10" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnTask id="task12" name="Avalia Cadastro e Documentos" incoming="flow13 flow15 flow20 flow24 flow35" outgoing="flow22" type="80" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
-  <bpmn2:SequenceFlow id="flow13" name="" sourceRef="exclusivegateway8" targetRef="task12" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow13" name="" sourceRef="exclusivegateway8" targetRef="task12" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnAnnotation id="annotationtask14" name="Inicia preenchimento de dados e anexo de documentos" outgoing="flow15 flow16" type="0"/>
-  <bpmn2:SequenceFlow id="flow15" name="" sourceRef="annotationtask14" targetRef="task12" atividadeFluxo=""/>
-  <bpmn2:SequenceFlow id="flow16" name="" sourceRef="annotationtask14" targetRef="exclusivegateway8" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow15" name="" sourceRef="annotationtask14" targetRef="task12" atividadeFluxo="" extendedFields="&lt;list/>"/>
+  <bpmn2:SequenceFlow id="flow16" name="" sourceRef="annotationtask14" targetRef="exclusivegateway8" atividadeFluxo="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnAnnotation id="annotationtask17" name="Notifica via e-mail representante (se sim)" outgoing="flow18 flow35" type="0"/>
-  <bpmn2:SequenceFlow id="flow18" name="" sourceRef="annotationtask17" targetRef="exclusivegateway8" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow18" name="" sourceRef="annotationtask17" targetRef="exclusivegateway8" atividadeFluxo="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnAnnotation id="annotationtask19" name="Se recusado, envia e-mail ao Macro e reseta o preenchimento" outgoing="flow20" type="0"/>
-  <bpmn2:SequenceFlow id="flow20" name="" sourceRef="annotationtask19" targetRef="task12" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow20" name="" sourceRef="annotationtask19" targetRef="task12" atividadeFluxo="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnTask id="task21" name="Validar Cadastro no MD-Log e Senior" incoming="flow22" outgoing="flow26" type="80" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
-  <bpmn2:SequenceFlow id="flow22" name="" sourceRef="task12" targetRef="task21"/>
+  <bpmn2:SequenceFlow id="flow22" name="" sourceRef="task12" targetRef="task21" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnAnnotation id="annotationtask23" name="Envia cadastro ao MD-log" outgoing="flow24" type="0"/>
-  <bpmn2:SequenceFlow id="flow24" name="" sourceRef="annotationtask23" targetRef="task12" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow24" name="" sourceRef="annotationtask23" targetRef="task12" atividadeFluxo="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnTask id="task25" name="Vincular Clientes ao Representante" incoming="flow26 flow37" outgoing="flow41" type="80" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
-  <bpmn2:SequenceFlow id="flow26" name="" sourceRef="task21" targetRef="task25"/>
+  <bpmn2:SequenceFlow id="flow26" name="" sourceRef="task21" targetRef="task25" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnSwimLane id="swimlane28" name="SwimLane"/>
   <bpmn2:BpmnSwimLane id="swimlane29" name="SwimLane"/>
   <bpmn2:BpmnSwimLane id="swimlane30" name="Representante" cores="FFFFFF"/>
@@ -3199,23 +3199,23 @@
   <bpmn2:BpmnSwimLane id="swimlane32" name="SwimLane"/>
   <bpmn2:BpmnSwimLane id="swimlane33" name="Comercial" cores="FFFFFF"/>
   <bpmn2:BpmnSwimLane id="swimlane34" name="ADM Representantes" cores="FFFFFF"/>
-  <bpmn2:SequenceFlow id="flow35" name="" sourceRef="annotationtask17" targetRef="task12" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow35" name="" sourceRef="annotationtask17" targetRef="task12" atividadeFluxo="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnAnnotation id="annotationtask36" name="Notificar Macro e Representante que o cadastro foi aprovado" outgoing="flow37" type="0"/>
-  <bpmn2:SequenceFlow id="flow37" name="" sourceRef="annotationtask36" targetRef="task25" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow37" name="" sourceRef="annotationtask36" targetRef="task25" atividadeFluxo="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnSwimLane id="swimlane38" name="SwimLane"/>
   <bpmn2:BpmnSwimLane id="swimlane39" name="TI" cores="FFFFFF"/>
   <bpmn2:BpmnTask id="task40" name="Lan&#xe7;ar Dados No Tablet" incoming="flow41 flow43 flow51 flow53" outgoing="flow45" type="80" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
-  <bpmn2:SequenceFlow id="flow41" name="" sourceRef="task25" targetRef="task40" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow41" name="" sourceRef="task25" targetRef="task40" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnAnnotation id="annotationtask42" name="Assinar Documentos no Vertsign" outgoing="flow43" type="0"/>
-  <bpmn2:SequenceFlow id="flow43" name="" sourceRef="annotationtask42" targetRef="task40" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow43" name="" sourceRef="annotationtask42" targetRef="task40" atividadeFluxo="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnTask id="task44" name="Enviar Tablet para Representante" incoming="flow45" outgoing="flow47" type="80" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
-  <bpmn2:SequenceFlow id="flow45" name="" sourceRef="task40" targetRef="task44"/>
+  <bpmn2:SequenceFlow id="flow45" name="" sourceRef="task40" targetRef="task44" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnTask id="task46" name="Configurar Acessos para Representante" incoming="flow47" outgoing="flow49" type="80" loopType="0" authNotify="true" expediente="" selecionaColaboradores="1" esforcoCalculo="0" executionAttempts="0" frequency="0"/>
-  <bpmn2:SequenceFlow id="flow47" name="" sourceRef="task44" targetRef="task46"/>
+  <bpmn2:SequenceFlow id="flow47" name="" sourceRef="task44" targetRef="task46" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnEndEvent id="endevent48" name="Fim" incoming="flow49" type="60" signalId="0"/>
-  <bpmn2:SequenceFlow id="flow49" name="" sourceRef="task46" targetRef="endevent48" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow49" name="" sourceRef="task46" targetRef="endevent48" atividadeFluxo="" atividadeRetorno="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnAnnotation id="annotationtask50" name="Gera Contrato de Servi&#xe7;o e Comodato" outgoing="flow51" type="0"/>
-  <bpmn2:SequenceFlow id="flow51" name="" sourceRef="annotationtask50" targetRef="task40" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow51" name="" sourceRef="annotationtask50" targetRef="task40" atividadeFluxo="" extendedFields="&lt;list/>"/>
   <bpmn2:BpmnAnnotation id="annotationtask52" name="Enviar envelope para Assinatura no Vertsign" outgoing="flow53" type="0"/>
-  <bpmn2:SequenceFlow id="flow53" name="" sourceRef="annotationtask52" targetRef="task40" atividadeFluxo=""/>
+  <bpmn2:SequenceFlow id="flow53" name="" sourceRef="annotationtask52" targetRef="task40" atividadeFluxo="" extendedFields="&lt;list/>"/>
 </xmi:XMI>

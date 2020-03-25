@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     hideAndShowFields();
     triggerClick();
+    disableAndEnableFields();
 
     var myCalendar = FLUIGC.calendar('.date-picker', {
         useCurrent: false
@@ -96,6 +97,16 @@ $(document).ready(function () {
 function beforeSendValidate(currentStage, nextStage) {
     var msg = "";
 
+    if (CURRENT_STATE === 0) {
+        if ($('select[name="indicacao_empresa"]').val() == '') {
+            msg += "É necessário selecionar a <strong>Empresa</strong>.<br>";
+        }
+    } else if (CURRENT_STATE === 6) {
+        if ($('input[name="representante_selecionado"]').is(':checked') === false) {
+            msg += "É necessário marcar o campo <strong>Representante Selecionado</strong>.";
+        }
+    }
+
     if (msg !== "") {
         throw (msg);
     }
@@ -108,11 +119,25 @@ function triggerClick() {
 }
 
 function hideAndShowFields() {
-    // $('#toggle_representante').hide();
-    // $('#toggle_empresa').hide();
-    // $('#toggle_dados').hide();
-    // $('#toggle_documentos').hide();
-    // $('#toggle_contratos').hide();
+    if (CURRENT_STATE === 0) {
+        $('#toggle_avaliacao').hide();
+        $('#toggle_representante').hide();
+        $('#toggle_empresa').hide();
+        $('#toggle_dados').hide();
+        $('#toggle_documentos').hide();
+        $('#toggle_contratos').hide();
+    } else if (CURRENT_STATE === 6) {
+        $('#toggle_empresa').hide();
+        $('#toggle_dados').hide();
+        $('#toggle_documentos').hide();
+        $('#toggle_contratos').hide();
+    }
+}
+
+function disableAndEnableFields() {
+    if (CURRENT_STATE !== 0 && CURRENT_STATE !== 6) {
+        $('#selecionado_sim').attr('checked', true);
+    }
 }
 
 
