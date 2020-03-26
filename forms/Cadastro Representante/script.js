@@ -39,8 +39,24 @@ $(document).ready(function () {
 
                 // Tratativa para caso o CNPJ não tenha 14 caracteres
             } else {
-                alert('CNPJ inválido');
+                FLUIGC.toast({
+                    title: '',
+                    message: 'É necessário informar um cnpj para realizar a consulta',
+                    type: 'danger'
+                });
             }
+        });
+
+        $('select[name="indicacao_empresa"]').on('change', function() {
+            $('input[name="indicacao_empresa_hidden"]').val($(this).val());
+        });
+    } else if (CURRENT_STATE === 12) {
+        $('#btn_aprovar_cadastro').on('click', function () {
+            $('input[name="cadastro_aprovado"]').val('S');
+        });
+
+        $('#btn_recusa_cadastro').on('click', function () {
+            $('input[name="cadastro_aprovado"]').val('N');
         });
 
         $('#representante_cep').on('focusout', function () {
@@ -56,68 +72,16 @@ $(document).ready(function () {
                     $('#representante_cidade').val(data.localidade);
                     $('#representante_rua').val(data.logradouro);
                     $('#representante_uf').val(data.uf);
-                    $('#representante_bairro').val(data.bairro);
-                    i8
-
+                    $('#representante_bairro').val(data.bairro); i8
                 },
-                error: function (erro) {
-                    console.log(erro);
+                error: function (err) {
+                    FLUIGC.toast({
+                        title: '',
+                        message: 'Erro ao realizar a consulta.',
+                        type: 'danger'
+                    });
                 }
             });
-        });
-
-        $('#empresa_cep').on('focusout', function () {
-            var cep = $('#empresa_cep').val();
-            cep = cep.replace('-', '');
-
-            var urlstr = 'http://viacep.com.br/ws/' + cep + '/json/';
-            $.ajax({
-                url: urlstr,
-                type: 'get',
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                    $('#empresa_cidade').val(data.localidade);
-                    $('#empresa_rua').val(data.logradouro);
-                    $('#empresa_uf').val(data.uf);
-                    $('#empresa_bairro').val(data.bairro);
-
-                },
-                error: function (erro) {
-                    console.log(erro)
-                }
-            });
-        });
-
-        // $('#avaliacao_cep').on('focusout', function () {
-        //     var cep = $('#avaliacao_cep').val();
-        //     cep = cep.replace('-', '');
-
-        //     var urlstr = 'http://viacep.com.br/ws/' + cep + '/json/';
-        //     $.ajax({
-        //         url: urlstr,
-        //         type: 'get',
-        //         dataType: 'json',
-        //         success: function (data) {
-        //             console.log(data);
-        //             $('#avaliacao_cidade').val(data.localidade);
-        //             $('#avaliacao_rua').val(data.logradouro);
-        //             $('#avaliacao_uf').val(data.uf);
-        //             $('#avaliacao_bairro').val(data.bairro);
-
-        //         },
-        //         error: function (erro) {
-        //             console.log(erro)
-        //         }
-        //     });
-        // });
-    } else if (CURRENT_STATE === 12) {
-        $('#btn_aprovar_cadastro').on('click', function () {
-            $('input[name="cadastro_aprovado"]').val('S');
-        });
-
-        $('#btn_recusa_cadastro').on('click', function () {
-            $('input[name="cadastro_aprovado"]').val('N');
         });
     }
 });
@@ -125,7 +89,7 @@ $(document).ready(function () {
 function beforeSendValidate(currentStage, nextStage) {
     var msg = "";
 
-    if (CURRENT_STATE === 0) {
+    if (CURRENT_STATE === 0 || CURRENT_STATE === 1) {
         if ($('select[name="indicacao_empresa"]').val() == '') {
             msg += "É necessário selecionar a <strong>Empresa</strong>.<br>";
         }
@@ -142,7 +106,19 @@ function beforeSendValidate(currentStage, nextStage) {
         }
     } else if (CURRENT_STATE === 21) {
         if ($('input[name="mdlog_ok"]').is(':checked') === false) {
-            msg += "É necessário verificar o cadastro no MD-Log e Senior";
+            msg += "É necessário verificar o cadastro no MD-Log e Senior.";
+        }
+    } else if (CURRENT_STATE === 25) {
+        if ($('input[name="vincula_clientes"]').is(':checked') === false) {
+            msg += "É necessário marcar o campo <strong>Clientes Vinculados</strong>.";
+        }
+    } else if (CURRENT_STATE === 44) {
+        if ($('input[name="envia_tablet"]').is(':checked') === false) {
+            msg += "É necessário marcar o campo <strong>Tablet Enviado</strong>.";
+        }
+    } else if (CURRENT_STATE === 46) {
+        if ($('input[name="configura_acesso"]').is(':checked') === false) {
+            msg += "É necessário marcar o campo <strong>Acesso Configurado</strong>.";
         }
     }
 
@@ -152,35 +128,57 @@ function beforeSendValidate(currentStage, nextStage) {
 }
 
 function triggerClick() {
-    if (CURRENT_STATE === 0) {
+    if (CURRENT_STATE === 0 || CURRENT_STATE === 1) {
         $('#toggle_indicacao').trigger('click');
     } else if (CURRENT_STATE === 6) {
         $('#toggle_avaliacao').trigger('click');
+    } else if (CURRENT_STATE === 25 || CURRENT_STATE === 44 || CURRENT_STATE === 46) {
+        $('#toggle_tarefas').trigger('click');
+    } else if (CURRENT_STATE === 40) {
+        $('#toggle_contratos').trigger('click');
     }
 }
 
 function hideAndShowFields() {
-    if (CURRENT_STATE === 0) {
-        $('#toggle_avaliacao').hide();
+    if (CURRENT_STATE === 0 || CURRENT_STATE === 1) {
         $('#toggle_representante').hide();
         $('#toggle_empresa').hide();
         $('#toggle_dados').hide();
         $('#toggle_documentos').hide();
         $('#toggle_contratos').hide();
+        $('#toggle_tarefas').hide();
     } else if (CURRENT_STATE === 6) {
+        $('#row_aprova_representante').show();
         $('#toggle_empresa').hide();
         $('#toggle_dados').hide();
         $('#toggle_documentos').hide();
         $('#toggle_contratos').hide();
+        $('#toggle_tarefas').hide();
     } else if (CURRENT_STATE === 12) {
         $('#row_aprova_cadastro').show();
+        $('#toggle_contratos').hide();
+        $('#toggle_tarefas').hide();
     } else if (CURRENT_STATE === 21) {
         $('#row_aprova_mdlog').show();
+        $('#toggle_contratos').hide();
+        $('#toggle_tarefas').hide();
+    } else if (CURRENT_STATE === 25) {
+        $('#toggle_contratos').hide();
+        $('#row_vincula_clientes').show();
+    } else if (CURRENT_STATE === 44) {
+        $('#row_envia_tablet').show();
+    } else if (CURRENT_STATE === 46) {
+        $('#row_configura_acesso').show();
     }
 }
 
 function disableAndEnableFields() {
-    if (CURRENT_STATE !== 0 && CURRENT_STATE !== 6) {
-        $('#selecionado_sim').attr('checked', true);
+    if (CURRENT_STATE !== 0 && CURRENT_STATE !== 1) {
+        $('.input_indicacao').attr('readonly', true);
+
+        $('select[name="indicacao_empresa"] option[value="' + $('input[name="indicacao_empresa_hidden"]').val() + '"]').attr('selected', 'selected');
+        $('select[name="indicacao_empresa"]').attr('disabled', true);
+    } else if (CURRENT_STATE !== 12) {
+        $('.input_cadastro_rep').attr('readonly', true);
     }
 }
