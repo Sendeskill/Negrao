@@ -9,7 +9,6 @@ $(document).ready(function () {
     });
 
     if (CURRENT_STATE === 0 || CURRENT_STATE === 1) {
-
         $('#indicacao_btn_pesquisar').on('click', function (e) {
 
             e.preventDefault();
