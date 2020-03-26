@@ -9,7 +9,7 @@
     <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
     <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </head>
 
 <body>
@@ -58,6 +58,8 @@
                             </li>
                             <li><a href="#tab_contratos" id="toggle_contratos" data-toggle="tab">Contratos</a>
                             </li>
+                            <li><a href="#tab_tarefas" id="toggle_tarefas" data-toggle="tab">Tarefas</a>
+                            </li>
                         </ul>
                         <div class="tab-content">
                             <!-- Tab Indicação de Representante -->
@@ -66,31 +68,37 @@
                                     <div class="col-md-3">
                                         <label for="indicacao_email">E-mail</label>
                                         <input type="text" name="indicacao_email" id="indicacao_email"
-                                            class="form-control">
+                                            class="form-control input_indicacao">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="indicacao_cpf">CPF</label>
-                                        <input type="text" name="indicacao_cpf" id="indicacao_cpf" class="form-control"
-                                            mask="000.000.000-00">
+                                        <input type="text" name="indicacao_cpf" id="indicacao_cpf"
+                                            class="form-control input_indicacao" mask="000.000.000-00">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="indicacao_cnpj">CNPJ</label>
                                         <input type="text" name="indicacao_cnpj" id="indicacao_cnpj"
-                                            class="form-control" mask="00.000.000/0000-00">
+                                            class="form-control input_indicacao" mask="00.000.000/0000-00">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="indicacao_regiao">Macro Região</label>
                                         <input type="text" name="indicacao_regiao" id="indicacao_regiao"
-                                            class="form-control">
+                                            class="form-control input_indicacao">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-9">
+                                        <input type="hidden" name="indicacao_empresa_hidden">
                                         <label for="indicacao_empresa">Empresa</label>
                                         <select name="indicacao_empresa" id="indicacao_empresa" class="form-control">
                                             <option value="">-- Selecione --</option>
                                             <option value="Negrão">Negrão</option>
                                         </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <br><br>
+                                        <button type="button" id="indicacao_btn_pesquisar"
+                                            class="btn btn-info">Consultar</button>
                                     </div>
                                 </div>
                             </div>
@@ -98,6 +106,22 @@
 
                             <!-- Tab Avaliação do Representante -->
                             <div id="tab_avaliacao" class="tab-pane">
+                                <div class="row" id="row_aprova_representante" style="display: none;">
+                                    <div class="col-md-3">
+                                        <string>Representante Selecionado</string>
+                                        <br>
+                                        <div class="custom-radio custom-radio-inline custom-radio-success">
+                                            <input type="radio" name="representante_selecionado" value="Sim"
+                                                id="selecionado_sim">
+                                            <label for="selecionado_sim">Sim</label>
+                                        </div>
+                                        <div class="custom-radio custom-radio-inline custom-radio-danger">
+                                            <input type="radio" name="representante_selecionado" value="Não"
+                                                id="selecionado_nao">
+                                            <label for="selecionado_nao">Não</label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-9">
                                         <label for="avaliacao_empresa">Empresa</label>
@@ -223,23 +247,6 @@
                                             class="form-control" readonly>
                                     </div>
                                 </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <string>Representante Selecionado</string>
-                                        <br>
-                                        <div class="custom-radio custom-radio-inline custom-radio-primary">
-                                            <input type="radio" name="representante_selecionado" value="Sim"
-                                                id="selecionado_sim">
-                                            <label for="selecionado_sim">Sim</label>
-                                        </div>
-                                        <div class="custom-radio custom-radio-inline custom-radio-primary">
-                                            <input type="radio" name="representante_selecionado" value="Não"
-                                                id="selecionado_nao">
-                                            <label for="selecionado_nao">Não</label>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <!-- FIM :: Tab Avaliação do Representante -->
 
@@ -261,58 +268,60 @@
                                     <div class="col-md-3">
                                         <label for="representante_nascimento">Nascimento</label>
                                         <input type="text" name="representante_nascimento" id="representante_nascimento"
-                                            class="form-control" mask="00/00/0000">
+                                            class="form-control date-picker input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="representante_rg">RG</label>
                                         <input type="text" name="representante_rg" id="representante_rg"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="representante_org_expedidor">Orgão Expedidor</label>
                                         <input type="text" name="representante_org_expedidor"
-                                            id="representante_org_expedidor" class="form-control">
+                                            id="representante_org_expedidor" class="form-control input_cadastro_rep">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label for="representante_email">E-mail</label>
                                         <input type="text" name="representante_email" id="representante_email"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="representante_telefone">Telefone</label>
                                         <input type="text" name="representante_telefone" id="representante_telefone"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="representante_celular">Celular</label>
                                         <input type="text" name="representante_celular" id="representante_celular"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label for="representante_num_core">Número CORE</label>
                                         <input type="text" name="representante_num_core" id="representante_num_core"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="representante_uf_core">UF CORE</label>
                                         <input type="text" name="representante_uf_core" id="representante_uf_core"
-                                            class="form-control" mask="AA">
+                                            class="form-control input_cadastro_rep" mask="AA">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="representante_emissao_core">Emissão CORE</label>
                                         <input type="text" name="representante_emissao_core"
-                                            id="representante_emissao_core" class="form-control date-picker">
+                                            id="representante_emissao_core"
+                                            class="form-control date-picker input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="representante_validade_core">Validade CORE</label>
                                         <input type="text" name="representante_validade_core"
-                                            id="representante_validade_core" class="form-control date-picker">
+                                            id="representante_validade_core"
+                                            class="form-control date-picker input_cadastro_rep">
                                     </div>
                                 </div>
                                 <br>
@@ -325,39 +334,39 @@
                                     <div class="col-md-3">
                                         <label for="representante_cep">CEP</label>
                                         <input type="text" name="representante_cep" id="representante_cep"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-9">
                                         <label for="representante_logradouro">Logradouro</label>
                                         <input type="text" name="representante_logradouro" id="representante_logradouro"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label for="representante_complemento">Complemento</label>
                                         <input type="text" name="representante_complemento"
-                                            id="representante_complemento" class="form-control">
+                                            id="representante_complemento" class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-2">
                                         <label for="representante_numero">Número</label>
                                         <input type="text" name="representante_numero" id="representante_numero"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-1">
                                         <label for="representante_uf">UF</label>
                                         <input type="text" name="representante_uf" id="representante_uf"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="representante_bairro">Bairro</label>
                                         <input type="text" name="representante_bairro" id="representante_bairro"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="representante_cidade">Cidade</label>
                                         <input type="text" name="representante_cidade" id="representante_cidade"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                 </div>
                             </div>
@@ -388,44 +397,44 @@
                                     <div class="col-md-3">
                                         <label for="empresa_insc_municipal">Insc. Municipal</label>
                                         <input type="text" name="empresa_insc_municipal" id="empresa_insc_municipal"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="empresa_num_alvara">Número Alvará</label>
                                         <input type="text" name="empresa_num_alvara" id="empresa_num_alvara"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="empresa_emi_alvara">Emissão Alvará</label>
                                         <input type="text" name="empresa_emi_alvara" id="empresa_emi_alvara"
-                                            class="form-control date-picker">
+                                            class="form-control input_cadastro_rep date-picker">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="empresa_val_alvara">Validade Alvará</label>
                                         <input type="text" name="empresa_val_alvara" id="empresa_val_alvara"
-                                            class="form-control date-picker">
+                                            class="form-control input_cadastro_rep date-picker">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label for="empresa_num_core">Número CORE</label>
                                         <input type="text" name="empresa_num_core" id="empresa_num_core"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="empresa_uf_core">UF CORE</label>
                                         <input type="text" name="empresa_uf_core" id="empresa_uf_core"
-                                            class="form-control" mask="AA">
+                                            class="form-control input_cadastro_rep" mask="AA">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="empresa_emissao_core">Emissão CORE</label>
                                         <input type="text" name="empresa_emissao_core" id="empresa_emissao_core"
-                                            class="form-control" mask="00/00/0000">
+                                            class="form-control input_cadastro_rep date-picker">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="empresa_validade_core">Validade CORE</label>
                                         <input type="text" name="empresa_validade_core" id="empresa_validade_core"
-                                            class="form-control" mask="00/00/0000">
+                                            class="form-control input_cadastro_rep date-picker">
                                     </div>
                                 </div>
                                 <br>
@@ -481,20 +490,23 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label for="dados_banco">Banco</label>
-                                        <input type="text" name="dados_banco" id="dados_banco" class="form-control">
+                                        <input type="text" name="dados_banco" id="dados_banco"
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="dados_agencia">Agência</label>
-                                        <input type="text" name="dados_agencia" id="dados_agencia" class="form-control">
+                                        <input type="text" name="dados_agencia" id="dados_agencia"
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="dados_conta">Conta</label>
-                                        <input type="text" name="dados_conta" id="dados_conta" class="form-control">
+                                        <input type="text" name="dados_conta" id="dados_conta"
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="dados_operacao">Operação</label>
                                         <input type="text" name="dados_operacao" id="dados_operacao"
-                                            class="form-control">
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                 </div>
                                 <br>
@@ -534,20 +546,22 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label for="dados_cpf">CPF</label>
-                                        <input type="text" name="dados_cpf" id="dados_cpf" class="form-control"
-                                            mask="000.000.000-00">
+                                        <input type="text" name="dados_cpf" id="dados_cpf"
+                                            class="form-control input_cadastro_rep" mask="000.000.000-00">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="dados_nome">Nome Completo</label>
-                                        <input type="text" name="dados_nome" id="dados_nome" class="form-control">
+                                        <input type="text" name="dados_nome" id="dados_nome"
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="dados_crc">CRC</label>
-                                        <input type="text" name="dados_crc" id="dados_crc" class="form-control">
+                                        <input type="text" name="dados_crc" id="dados_crc"
+                                            class="form-control input_cadastro_rep">
                                     </div>
                                 </div>
                                 <br>
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-md-12">
                                         <h5>Para uso Interno</h5>
                                     </div>
@@ -563,76 +577,83 @@
                                         <input type="text" name="dados_macro_regial" id="dados_macro_regial"
                                             class="form-control" readonly>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <!-- FIM :: Tab Outros dados -->
 
                             <!-- Tab Documentos -->
                             <div id="tab_documentos" class="tab-pane">
-                                <h4>Aqui deve aparecer os documentos anexados no portal</h4>
-                                <!-- <div class="col-md-3">
-                                    <p>Carta de Solicitação</p>
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Visualizar"
-                                        name="documentos_solicitacao_visu" id="documentos_solicitacao_visu">
-                                    <a href="./Cadastro%20Representante.html" rel="modal:open"
-                                        style="text-decoration: none; color: white">Gerar PDF</a>
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Anexar"
-                                        name="documentos_solicitacao_anexar" id="documentos_solicitacao_anexar">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <string>Carta de Solicitação</string>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <p>Documento de Identificação do Representante</p>
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Visualizar"
-                                        name="documentos_identificacao_visu" id="documentos_identificacao_visu">
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Anexar"
-                                        name="documentos_identificacao_anexa" id="documentos_identificacao_anexa">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <string>Documento de Identificação do Representante</string>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-info">Visualizar</button>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <p>Documento Bancário</p>
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Visualizar"
-                                        name="documentos_bancaraio_visu" id="documentos_bancaraio_visu">
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Anexar"
-                                        name="documentos_bancario_anexar" id="documentos_bancario_anexar">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <string>Documento Bancário</string>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-info">Visualizar</button>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <p>Core do Representante</p>
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Visualizar"
-                                        name="documentos_core_visu" id="documentos_core_visu">
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Anexar"
-                                        name="documentos_core_anexar" id="documentos_core_anexar">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <string>Core do Representante</string>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-info">Visualizar</button>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <p>Core da Empresa</p>
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Visualizar"
-                                        name="documentos_empresa_visu" id="documentos_empresa_visu">
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Anexar"
-                                        name="documentos_empresa_anexar" id="documentos_empresa_anexar">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <string>Core da Empresa</string>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-info">Visualizar</button>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <p>Inscrição Municipal ou Alvará</p>
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Visualizar"
-                                        name="documentos_alvara_visu" id="documentos_alvara_visu">
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Anexar"
-                                        name="documentos_alvara_anexar" id="documentos_alvara_anexar">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <string>Inscrição Municipal ou Alvará</string>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-info">Visualizar</button>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <p>Contrato Social</p>
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Visualizar"
-                                        name="documentos_contrato_visu" id="documentos_contrato_visu">
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Anexar"
-                                        name="documentos_contrato_anexar" id="documentos_contrato_anexar">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <string>Contrato Social</string>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-info">Visualizar</button>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <p>Comprovante de endereço para correspondência</p>
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Visualizar"
-                                        name="documentos_comprovante_visu" id="documentos_comprovante_visu">
-                                    <input class="btn btn-primary margem-top-btn" type="submit" value="Anexar"
-                                        name="documentos_comprovante_anexar" id="documentos_comprovante_anexar">
-                                </div> -->
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <string>Comprovante de endereço para correspondência</string>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-info">Visualizar</button>
+                                    </div>
+                                </div>
                             </div>
                             <!-- FIM :: Tab Documentos -->
 
                             <!-- Tab Contratos -->
                             <div id="tab_contratos" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5>Tablet</h5>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label for="contatos_descritivo">Descritivo</label>
@@ -684,23 +705,36 @@
                                 </div>
                             </div>
                             <!-- FIM :: Tab Contratos -->
+
+                            <!-- TAB Tarefas -->
+                            <div id="tab_tarefas" class="tab-pane">
+                                <div class="row" id="row_vincula_clientes" style="display: none;">
+                                    <div class="custom-checkbox custom-checkbox-primary">
+                                        <input name="vincula_clientes" type="checkbox" id="vincula_clientes">
+                                        <label for="vincula_clientes">Clientes Vinculados</label>
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="row" id="row_envia_tablet" style="display: none;">
+                                    <div class="custom-checkbox custom-checkbox-primary">
+                                        <input name="envia_tablet" type="checkbox" id="envia_tablet">
+                                        <label for="envia_tablet">Tablet Enviado</label>
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="row" id="row_configura_acesso" style="display: none;">
+                                    <div class="custom-checkbox custom-checkbox-primary">
+                                        <input name="configura_acesso" type="checkbox" id="configura_acesso">
+                                        <label for="configura_acesso">Acesso Configurado</label>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                            <!-- FIM:: TAB Tarefas -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Modal -->
-            <div class="modal" id="modalvisu">
-                <div class="fluig-style-guide">
-                    <p>Conteuado a ser visualizado</p>
-                    <div style="text-align: right;">
-                        <a href="#" rel="modal:close">
-                            <button type="button" class="btn btn-danger" rel="modal:close">Fechar
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- FIM :: Modal -->
         </form>
     </div>
 </body>
