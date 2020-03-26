@@ -16,18 +16,39 @@ $(document).ready(function () {
 
             var cnpj = $('#indicacao_cnpj').val().replace(/[^0-9]/g, '');
 
-            if(cnpj.length == 14) {
+            if (cnpj.length == 14) {
 
                 $.ajax({
-                    url:'https://www.receitaws.com.br/v1/cnpj/' + cnpj,
-                    method:'GET',
+                    url: 'https://www.receitaws.com.br/v1/cnpj/' + cnpj,
+                    method: 'GET',
                     dataType: 'jsonp',
-                    complete: function(xhr){
+                    complete: function (xhr) {
 
                         response = xhr.responseJSON;
 
-                        if(response.status == 'OK') {
+                        if (response.status === 'OK') {
+                            $('#toggle_empresa').show();
+
+                            $('#toggle_indicacao').attr('aria-expanded', 'false');
+                            $('#li_tab_indicacao').removeClass('active');
+                            $('#tab_indicacao').removeClass('active');
+
+                            $('#toggle_empresa').attr('aria-expanded', 'true');
+                            $('#li_tab_empresa').addClass('active');
+                            $('#tab_empresa').addClass('active');
+
                             // Agora preenchemos os campos com os valores retornados
+                            $('#empresa_razao_social').val(response.nome);
+                            $('#empresa_cnpj').val(response.cnpj);
+                            // $('#empresa_num_alvara').val(response.municipio);
+                            $('#empresa_cep').val(response.cep);
+                            $('#empresa_logradouro').val(response.logradouro);
+                            $('#empresa_complemento').val(response.complemento);
+                            $('#empresa_numero').val(response.numero);
+                            $('#empresa_uf').val(response.uf);
+                            $('#empresa_bairro').val(response.bairro);
+                            $('#empresa_cidade').val(response.municipio);
+
                             console.log('response', response)
                         } else {
                             alert(response.message);
@@ -38,13 +59,13 @@ $(document).ready(function () {
             } else {
                 FLUIGC.toast({
                     title: '',
-                    message: 'É necessário informar um cnpj para realizar a consulta',
+                    message: 'É necessário informar um CNPJ válido para realizar a consulta.',
                     type: 'danger'
                 });
             }
         });
 
-        $('select[name="indicacao_empresa"]').on('change', function() {
+        $('select[name="indicacao_empresa"]').on('change', function () {
             $('input[name="indicacao_empresa_hidden"]').val($(this).val());
         });
     } else if (CURRENT_STATE === 12) {
@@ -69,7 +90,8 @@ $(document).ready(function () {
                     $('#representante_cidade').val(data.localidade);
                     $('#representante_rua').val(data.logradouro);
                     $('#representante_uf').val(data.uf);
-                    $('#representante_bairro').val(data.bairro); i8
+                    $('#representante_bairro').val(data.bairro);
+                    i8
                 },
                 error: function (err) {
                     FLUIGC.toast({
@@ -139,6 +161,7 @@ function triggerClick() {
 function hideAndShowFields() {
     if (CURRENT_STATE === 0 || CURRENT_STATE === 1) {
         $('#toggle_representante').hide();
+        $('#toggle_avaliacao').hide();
         $('#toggle_empresa').hide();
         $('#toggle_dados').hide();
         $('#toggle_documentos').hide();

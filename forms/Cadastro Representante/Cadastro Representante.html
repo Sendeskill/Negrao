@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link type="text/css" rel="stylesheet" href="./style.css" />
-    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="./style.css"/>
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
     <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
@@ -13,728 +13,739 @@
 </head>
 
 <body>
-    <div class="fluig-style-guide" id="fluig-style-guide">
-        <form name="form" role="form">
-            <div class="container-fluid" id="container-form">
-                <div class="panel panel-default">
-                    <div class="panel-body">
+<div class="fluig-style-guide" id="fluig-style-guide">
+    <form name="form" role="form">
+        <div class="container-fluid" id="container-form">
+            <div class="panel panel-default">
+                <div class="panel-body">
 
-                        <!-- APROVAÇÃO DE CADASTRO -->
-                        <div class="row" id="row_aprova_cadastro" style="display: none;">
-                            <input type="hidden" name="cadastro_aprovado">
-                            <div class="col-md-3">
-                                <button type="button" class="btn btn-success" id="btn_aprovar_cadastro">Aprovar Cadastro
-                                    e Documentos</button>
+                    <!-- APROVAÇÃO DE CADASTRO -->
+                    <div class="row" id="row_aprova_cadastro" style="display: none;">
+                        <input type="hidden" name="cadastro_aprovado">
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-success" id="btn_aprovar_cadastro">Aprovar Cadastro
+                                e Documentos
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-danger" id="btn_recusa_cadastro">Recusar Cadastro
+                                e Documentos
+                            </button>
+                        </div>
+                        <br>
+                    </div>
+                    <!-- FIM:: APROVAÇÃO DE CADASTRO -->
+
+                    <!-- APROVAÇÃO DO MD LOG -->
+                    <div class="row" id="row_aprova_mdlog" style="display: none;">
+                        <div class="custom-checkbox custom-checkbox-primary">
+                            <input name="mdlog_ok" type="checkbox" id="mdlog_ok">
+                            <label for="mdlog_ok">Cadastrado do MD-Log e Senior</label>
+                        </div>
+                        <br>
+                    </div>
+                    <!-- FIM:: APROVAÇÃO DO MD LOG -->
+
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li id="li_tab_indicacao"><a href="#tab_indicacao" id="toggle_indicacao" data-toggle="tab">Indicação
+                            de
+                            Representante</a></li>
+                        <li id="li_tab_avalicao"><a href="#tab_avaliacao" id="toggle_avaliacao" data-toggle="tab">Avaliação
+                            de
+                            Representante</a></li>
+                        <li id="li_tab_representante"><a href="#tab_representante" id="toggle_representante"
+                                                         data-toggle="tab">Representante</a>
+                        </li>
+                        <li id="li_tab_empresa"><a href="#tab_empresa" id="toggle_empresa" data-toggle="tab">Empresa</a>
+                        </li>
+                        <li id="li_tab_dados"><a href="#tab_dados" id="toggle_dados" data-toggle="tab">Outros Dados</a>
+                        </li>
+                        <li id="li_tab_documentos"><a href="#tab_documentos" id="toggle_documentos" data-toggle="tab">Documento</a>
+                        </li>
+                        <li id="li_tab_contratos"><a href="#tab_contratos" id="toggle_contratos" data-toggle="tab">Contratos</a>
+                        </li>
+                        <li id="li_tab_tarefas"><a href="#tab_tarefas" id="toggle_tarefas" data-toggle="tab">Tarefas</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- Tab Indicação de Representante -->
+                        <div id="tab_indicacao" class="tab-pane">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="indicacao_email">E-mail</label>
+                                    <input type="text" name="indicacao_email" id="indicacao_email"
+                                           class="form-control input_indicacao">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="indicacao_cpf">CPF</label>
+                                    <input type="text" name="indicacao_cpf" id="indicacao_cpf"
+                                           class="form-control input_indicacao" mask="000.000.000-00">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="indicacao_cnpj">CNPJ</label>
+                                    <input type="text" name="indicacao_cnpj" id="indicacao_cnpj"
+                                           class="form-control input_indicacao" mask="00.000.000/0000-00">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="indicacao_regiao">Macro Região</label>
+                                    <input type="text" name="indicacao_regiao" id="indicacao_regiao"
+                                           class="form-control input_indicacao">
+                                </div>
                             </div>
-                            <div class="col-md-3">
-                                <button type="button" class="btn btn-danger" id="btn_recusa_cadastro">Recusar Cadastro
-                                    e Documentos</button>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input type="hidden" name="indicacao_empresa_hidden">
+                                    <label for="indicacao_empresa">Empresa</label>
+                                    <select name="indicacao_empresa" id="indicacao_empresa" class="form-control">
+                                        <option value="">-- Selecione --</option>
+                                        <option value="Negrão">Negrão</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-info btn-pesquisar-representate"
+                                        name="indicacao_btn_pesquisar" id="indicacao_btn_pesquisar">Pesquisar
+                                    Representade
+                                </button>
+                            </div>
+                        </div>
+                        <!-- FIM :: Tab Indicação de Representante -->
+
+                        <!-- Tab Avaliação do Representante -->
+                        <div id="tab_avaliacao" class="tab-pane">
+                            <div class="row" id="row_aprova_representante" style="display: none;">
+                                <div class="col-md-3">
+                                    <string>Representante Selecionado</string>
+                                    <br>
+                                    <div class="custom-radio custom-radio-inline custom-radio-success">
+                                        <input type="radio" name="representante_selecionado" value="Sim"
+                                               id="selecionado_sim">
+                                        <label for="selecionado_sim">Sim</label>
+                                    </div>
+                                    <div class="custom-radio custom-radio-inline custom-radio-danger">
+                                        <input type="radio" name="representante_selecionado" value="Não"
+                                               id="selecionado_nao">
+                                        <label for="selecionado_nao">Não</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <label for="avaliacao_empresa">Empresa</label>
+                                    <input type="text" name="avaliacao_empresa" id="avaliacao_empresa"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="avaliacao_regiao">Macro Região</label>
+                                    <input type="text" name="avaliacao_regiao" id="avaliacao_regiao"
+                                           class="form-control" readonly>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="avaliacao_cpf">CPF</label>
+                                    <input type="text" name="avaliacao_cpf" id="avaliacao_cpf" class="form-control"
+                                           mask="000.000.000-00" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="avaliacao_situacao">Situação</label>
+                                    <input type="text" name="avaliacao_situacao" id="avaliacao_situacao"
+                                           class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="avaliacao_nome">Nome</label>
+                                    <input type="text" name="avaliacao_nome" id="avaliacao_nome"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="avaliacao_email">E-mail</label>
+                                    <input type="text" name="avaliacao_email" id="avaliacao_email"
+                                           class="form-control" readonly>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="avaliacao_cnpj">CNPJ</label>
+                                    <input type="text" name="avaliacao_cnpj" id="avaliacao_cnpj"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="avaliacao_razao">Razão Social</label>
+                                    <input type="text" name="avaliacao_razao" id="avaliacao_razao"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="avaliacao_situacao2">Situação</label>
+                                    <input type="text" name="avaliacao_situacao2" id="avaliacao_situacao2"
+                                           class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="avaliacao_telefone">Telefone</label>
+                                    <input type="text" name="avaliacao_telefone" id="avaliacao_telefone"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="avaliacao_telefone2">Telefone</label>
+                                    <input type="text" name="avaliacao_telefone2" id="avaliacao_telefone2"
+                                           class="form-control" readonly>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="avaliacao_cep">CEP</label>
+                                    <input type="text" name="avaliacao_cep" id="avaliacao_cep" class="form-control"
+                                           readonly>
+                                </div>
+                                <div class="col-md-9">
+                                    <label for="avaliacao_logradouro">Logradouro</label>
+                                    <input type="text" name="avaliacao_logradouro" id="avaliacao_logradouro"
+                                           class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="avaliacao_complemento">Complemento</label>
+                                    <input type="text" name="avaliacao_complemento" id="avaliacao_complemento"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-1">
+                                    <label for="avaliacao_numero">N°</label>
+                                    <input type="text" name="avaliacao_numero" id="avaliacao_numero"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="avaliacao_uf">UF</label>
+                                    <input type="text" name="avaliacao_uf" id="avaliacao_uf" class="form-control"
+                                           readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="avaliacao_bairro">Bairro</label>
+                                    <input type="text" name="avaliacao_bairro" id="avaliacao_bairro"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="avaliacao_cidade">Cidade</label>
+                                    <input type="text" name="avaliacao_cidade" id="avaliacao_cidade"
+                                           class="form-control" readonly>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="avaliacao_abertura">Abertura</label>
+                                    <input type="text" name="avaliacao_abertura" id="avaliacao_abertura"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="avaliacao_natureza">Natureza</label>
+                                    <input type="text" name="avaliacao_natureza" id="avaliacao_natureza"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="avaliacao_atividade">Atividade</label>
+                                    <input type="text" name="avaliacao_atividade" id="avaliacao_atividade"
+                                           class="form-control" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FIM :: Tab Avaliação do Representante -->
+
+                        <!-- Tab Representante -->
+                        <div id="tab_representante" class="tab-pane">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="representante_cpf">CPF</label>
+                                    <input type="text" name="representante_cpf" id="representante_cpf"
+                                           class="form-control" mask="000.000.000-00" readonly>
+                                </div>
+                                <div class="col-md-9">
+                                    <label for="representante_nome">Nome</label>
+                                    <input type="text" name="representante_nome" id="representante_nome"
+                                           class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="representante_nascimento">Nascimento</label>
+                                    <input type="text" name="representante_nascimento" id="representante_nascimento"
+                                           class="form-control date-picker input_cadastro_rep">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="representante_rg">RG</label>
+                                    <input type="text" name="representante_rg" id="representante_rg"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="representante_org_expedidor">Orgão Expedidor</label>
+                                    <input type="text" name="representante_org_expedidor"
+                                           id="representante_org_expedidor" class="form-control input_cadastro_rep">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="representante_email">E-mail</label>
+                                    <input type="text" name="representante_email" id="representante_email"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="representante_telefone">Telefone</label>
+                                    <input type="text" name="representante_telefone" id="representante_telefone"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="representante_celular">Celular</label>
+                                    <input type="text" name="representante_celular" id="representante_celular"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="representante_num_core">Número CORE</label>
+                                    <input type="text" name="representante_num_core" id="representante_num_core"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="representante_uf_core">UF CORE</label>
+                                    <input type="text" name="representante_uf_core" id="representante_uf_core"
+                                           class="form-control input_cadastro_rep" mask="AA">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="representante_emissao_core">Emissão CORE</label>
+                                    <input type="text" name="representante_emissao_core"
+                                           id="representante_emissao_core"
+                                           class="form-control date-picker input_cadastro_rep">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="representante_validade_core">Validade CORE</label>
+                                    <input type="text" name="representante_validade_core"
+                                           id="representante_validade_core"
+                                           class="form-control date-picker input_cadastro_rep">
+                                </div>
                             </div>
                             <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5>Endereço para Correspondência</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="representante_cep">CEP</label>
+                                    <input type="text" name="representante_cep" id="representante_cep"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-9">
+                                    <label for="representante_logradouro">Logradouro</label>
+                                    <input type="text" name="representante_logradouro" id="representante_logradouro"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="representante_complemento">Complemento</label>
+                                    <input type="text" name="representante_complemento"
+                                           id="representante_complemento" class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="representante_numero">Número</label>
+                                    <input type="text" name="representante_numero" id="representante_numero"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-1">
+                                    <label for="representante_uf">UF</label>
+                                    <input type="text" name="representante_uf" id="representante_uf"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="representante_bairro">Bairro</label>
+                                    <input type="text" name="representante_bairro" id="representante_bairro"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="representante_cidade">Cidade</label>
+                                    <input type="text" name="representante_cidade" id="representante_cidade"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                            </div>
                         </div>
-                        <!-- FIM:: APROVAÇÃO DE CADASTRO -->
+                        <!-- FIM :: Tab Representante -->
 
-                        <!-- APROVAÇÃO DO MD LOG -->
-                        <div class="row" id="row_aprova_mdlog" style="display: none;">
-                            <div class="custom-checkbox custom-checkbox-primary">
-                                <input name="mdlog_ok" type="checkbox" id="mdlog_ok">
-                                <label for="mdlog_ok">Cadastrado do MD-Log e Senior</label>
+                        <!-- Tab Empresa -->
+                        <div id="tab_empresa" class="tab-pane">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="empresa_cnpj">CNPJ</label>
+                                    <input type="text" name="empresa_cnpj" id="empresa_cnpj" class="form-control"
+                                           mask="00.000.000/0000-00" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="empresa_razao_social">Razão Social</label>
+                                    <input type="text" name="empresa_razao_social" id="empresa_razao_social"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="custom-checkbox custom-checkbox-primary">
+                                        <input name="optante" type="checkbox" id="optante">
+                                        <label for="optante" class="margem-top-btn">Optante Simples
+                                            Nacional</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="empresa_insc_municipal">Insc. Municipal</label>
+                                    <input type="text" name="empresa_insc_municipal" id="empresa_insc_municipal"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="empresa_num_alvara">Número Alvará</label>
+                                    <input type="text" name="empresa_num_alvara" id="empresa_num_alvara"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="empresa_emi_alvara">Emissão Alvará</label>
+                                    <input type="text" name="empresa_emi_alvara" id="empresa_emi_alvara"
+                                           class="form-control input_cadastro_rep date-picker">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="empresa_val_alvara">Validade Alvará</label>
+                                    <input type="text" name="empresa_val_alvara" id="empresa_val_alvara"
+                                           class="form-control input_cadastro_rep date-picker">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="empresa_num_core">Número CORE</label>
+                                    <input type="text" name="empresa_num_core" id="empresa_num_core"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="empresa_uf_core">UF CORE</label>
+                                    <input type="text" name="empresa_uf_core" id="empresa_uf_core"
+                                           class="form-control input_cadastro_rep" mask="AA">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="empresa_emissao_core">Emissão CORE</label>
+                                    <input type="text" name="empresa_emissao_core" id="empresa_emissao_core"
+                                           class="form-control input_cadastro_rep date-picker">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="empresa_validade_core">Validade CORE</label>
+                                    <input type="text" name="empresa_validade_core" id="empresa_validade_core"
+                                           class="form-control input_cadastro_rep date-picker">
+                                </div>
                             </div>
                             <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5>Endereço da Empresa</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="empresa_cep">CEP</label>
+                                    <input type="text" name="empresa_cep" id="empresa_cep" class="form-control"
+                                           readonly>
+                                </div>
+                                <div class="col-md-9">
+                                    <label for="empresa_logradouro">Logradouro</label>
+                                    <input type="text" name="empresa_logradouro" id="empresa_logradouro"
+                                           class="form-control" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="empresa_complemento">Complemento</label>
+                                    <input type="text" name="empresa_complemento" id="empresa_complemento"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="empresa_numero">Número</label>
+                                    <input type="text" name="empresa_numero" id="empresa_numero"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-1">
+                                    <label for="empresa_uf">UF</label>
+                                    <input type="text" name="empresa_uf" id="empresa_uf" class="form-control"
+                                           readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="empresa_bairro">Bairro</label>
+                                    <input type="text" name="empresa_bairro" id="empresa_bairro"
+                                           class="form-control" readonly>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="empresa_cidade">Cidade</label>
+                                    <input type="text" name="empresa_cidade" id="empresa_cidade"
+                                           class="form-control" readonly>
+                                </div>
+                            </div>
                         </div>
-                        <!-- FIM:: APROVAÇÃO DO MD LOG -->
+                        <!-- FIM :: Tab Empresa -->
 
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li><a href="#tab_indicacao" id="toggle_indicacao" data-toggle="tab">Indicação de
-                                    Representante</a></li>
-                            <li><a href="#tab_avaliacao" id="toggle_avaliacao" data-toggle="tab">Avaliação de
-                                    Representante</a></li>
-                            <li><a href="#tab_representante" id="toggle_representante"
-                                    data-toggle="tab">Representante</a>
-                            </li>
-                            <li><a href="#tab_empresa" id="toggle_empresa" data-toggle="tab">Empresa</a></li>
-                            <li><a href="#tab_dados" id="toggle_dados" data-toggle="tab">Outros Dados</a></li>
-                            <li><a href="#tab_documentos" id="toggle_documentos" data-toggle="tab">Documento</a>
-                            </li>
-                            <li><a href="#tab_contratos" id="toggle_contratos" data-toggle="tab">Contratos</a>
-                            </li>
-                            <li><a href="#tab_tarefas" id="toggle_tarefas" data-toggle="tab">Tarefas</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <!-- Tab Indicação de Representante -->
-                            <div id="tab_indicacao" class="tab-pane">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="indicacao_email">E-mail</label>
-                                        <input type="text" name="indicacao_email" id="indicacao_email"
-                                            class="form-control input_indicacao">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="indicacao_cpf">CPF</label>
-                                        <input type="text" name="indicacao_cpf" id="indicacao_cpf"
-                                            class="form-control input_indicacao" mask="000.000.000-00">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="indicacao_cnpj">CNPJ</label>
-                                        <input type="text" name="indicacao_cnpj" id="indicacao_cnpj"
-                                            class="form-control input_indicacao" mask="00.000.000/0000-00">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="indicacao_regiao">Macro Região</label>
-                                        <input type="text" name="indicacao_regiao" id="indicacao_regiao"
-                                            class="form-control input_indicacao">
-                                    </div>
+                        <!-- Tab Outros dados -->
+                        <div id="tab_dados" class="tab-pane">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="dados_banco">Banco</label>
+                                    <input type="text" name="dados_banco" id="dados_banco"
+                                           class="form-control input_cadastro_rep">
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <input type="hidden" name="indicacao_empresa_hidden">
-                                        <label for="indicacao_empresa">Empresa</label>
-                                        <select name="indicacao_empresa" id="indicacao_empresa" class="form-control">
-                                            <option value="">-- Selecione --</option>
-                                            <option value="Negrão">Negrão</option>
-                                        </select>
-                                    </div>
+                                <div class="col-md-3">
+                                    <label for="dados_agencia">Agência</label>
+                                    <input type="text" name="dados_agencia" id="dados_agencia"
+                                           class="form-control input_cadastro_rep">
                                 </div>
-                                <div>
-                                    <button type="button" class="btn btn-info btn-pesquisar-representate" name="indicacao_btn_pesquisar" id="indicacao_btn_pesquisar">Pesquisar Representade</button>
+                                <div class="col-md-3">
+                                    <label for="dados_conta">Conta</label>
+                                    <input type="text" name="dados_conta" id="dados_conta"
+                                           class="form-control input_cadastro_rep">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="dados_operacao">Operação</label>
+                                    <input type="text" name="dados_operacao" id="dados_operacao"
+                                           class="form-control input_cadastro_rep">
                                 </div>
                             </div>
-                            <!-- FIM :: Tab Indicação de Representante -->
-
-                            <!-- Tab Avaliação do Representante -->
-                            <div id="tab_avaliacao" class="tab-pane">
-                                <div class="row" id="row_aprova_representante" style="display: none;">
-                                    <div class="col-md-3">
-                                        <string>Representante Selecionado</string>
-                                        <br>
-                                        <div class="custom-radio custom-radio-inline custom-radio-success">
-                                            <input type="radio" name="representante_selecionado" value="Sim"
-                                                id="selecionado_sim">
-                                            <label for="selecionado_sim">Sim</label>
-                                        </div>
-                                        <div class="custom-radio custom-radio-inline custom-radio-danger">
-                                            <input type="radio" name="representante_selecionado" value="Não"
-                                                id="selecionado_nao">
-                                            <label for="selecionado_nao">Não</label>
-                                        </div>
-                                    </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5>Tipo de Conta</h5>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <label for="avaliacao_empresa">Empresa</label>
-                                        <input type="text" name="avaliacao_empresa" id="avaliacao_empresa"
-                                            class="form-control" readonly>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="custom-radio custom-radio-inline custom-radio-primary">
+                                        <input type="radio" name="empresa_radio" id="dados_tipo_conta">
+                                        <label for="dados_tipo_conta">Conta Corrente</label>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_regiao">Macro Região</label>
-                                        <input type="text" name="avaliacao_regiao" id="avaliacao_regiao"
-                                            class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_cpf">CPF</label>
-                                        <input type="text" name="avaliacao_cpf" id="avaliacao_cpf" class="form-control"
-                                            mask="000.000.000-00" readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_situacao">Situação</label>
-                                        <input type="text" name="avaliacao_situacao" id="avaliacao_situacao"
-                                            class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="avaliacao_nome">Nome</label>
-                                        <input type="text" name="avaliacao_nome" id="avaliacao_nome"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="avaliacao_email">E-mail</label>
-                                        <input type="text" name="avaliacao_email" id="avaliacao_email"
-                                            class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_cnpj">CNPJ</label>
-                                        <input type="text" name="avaliacao_cnpj" id="avaliacao_cnpj"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="avaliacao_razao">Razão Social</label>
-                                        <input type="text" name="avaliacao_razao" id="avaliacao_razao"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_situacao2">Situação</label>
-                                        <input type="text" name="avaliacao_situacao2" id="avaliacao_situacao2"
-                                            class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="avaliacao_telefone">Telefone</label>
-                                        <input type="text" name="avaliacao_telefone" id="avaliacao_telefone"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="avaliacao_telefone2">Telefone</label>
-                                        <input type="text" name="avaliacao_telefone2" id="avaliacao_telefone2"
-                                            class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_cep">CEP</label>
-                                        <input type="text" name="avaliacao_cep" id="avaliacao_cep" class="form-control"
-                                            readonly>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <label for="avaliacao_logradouro">Logradouro</label>
-                                        <input type="text" name="avaliacao_logradouro" id="avaliacao_logradouro"
-                                            class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_complemento">Complemento</label>
-                                        <input type="text" name="avaliacao_complemento" id="avaliacao_complemento"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <label for="avaliacao_numero">N°</label>
-                                        <input type="text" name="avaliacao_numero" id="avaliacao_numero"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="avaliacao_uf">UF</label>
-                                        <input type="text" name="avaliacao_uf" id="avaliacao_uf" class="form-control"
-                                            readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_bairro">Bairro</label>
-                                        <input type="text" name="avaliacao_bairro" id="avaliacao_bairro"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_cidade">Cidade</label>
-                                        <input type="text" name="avaliacao_cidade" id="avaliacao_cidade"
-                                            class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_abertura">Abertura</label>
-                                        <input type="text" name="avaliacao_abertura" id="avaliacao_abertura"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_natureza">Natureza</label>
-                                        <input type="text" name="avaliacao_natureza" id="avaliacao_natureza"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="avaliacao_atividade">Atividade</label>
-                                        <input type="text" name="avaliacao_atividade" id="avaliacao_atividade"
-                                            class="form-control" readonly>
+                                    <div class="custom-radio custom-radio-inline custom-radio-primary">
+                                        <input type="radio" name="empresa_radio" id="dados_tipo_conta_radio">
+                                        <label for="dados_tipo_conta_radio">Poupança</label>
                                     </div>
                                 </div>
                             </div>
-                            <!-- FIM :: Tab Avaliação do Representante -->
-
-                            <!-- Tab Representante -->
-                            <div id="tab_representante" class="tab-pane">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="representante_cpf">CPF</label>
-                                        <input type="text" name="representante_cpf" id="representante_cpf"
-                                            class="form-control" mask="000.000.000-00" readonly>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <label for="representante_nome">Nome</label>
-                                        <input type="text" name="representante_nome" id="representante_nome"
-                                            class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="representante_nascimento">Nascimento</label>
-                                        <input type="text" name="representante_nascimento" id="representante_nascimento"
-                                            class="form-control date-picker input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="representante_rg">RG</label>
-                                        <input type="text" name="representante_rg" id="representante_rg"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="representante_org_expedidor">Orgão Expedidor</label>
-                                        <input type="text" name="representante_org_expedidor"
-                                            id="representante_org_expedidor" class="form-control input_cadastro_rep">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label for="representante_email">E-mail</label>
-                                        <input type="text" name="representante_email" id="representante_email"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="representante_telefone">Telefone</label>
-                                        <input type="text" name="representante_telefone" id="representante_telefone"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="representante_celular">Celular</label>
-                                        <input type="text" name="representante_celular" id="representante_celular"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="representante_num_core">Número CORE</label>
-                                        <input type="text" name="representante_num_core" id="representante_num_core"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="representante_uf_core">UF CORE</label>
-                                        <input type="text" name="representante_uf_core" id="representante_uf_core"
-                                            class="form-control input_cadastro_rep" mask="AA">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="representante_emissao_core">Emissão CORE</label>
-                                        <input type="text" name="representante_emissao_core"
-                                            id="representante_emissao_core"
-                                            class="form-control date-picker input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="representante_validade_core">Validade CORE</label>
-                                        <input type="text" name="representante_validade_core"
-                                            id="representante_validade_core"
-                                            class="form-control date-picker input_cadastro_rep">
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h5>Endereço para Correspondência</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="representante_cep">CEP</label>
-                                        <input type="text" name="representante_cep" id="representante_cep"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-9">
-                                        <label for="representante_logradouro">Logradouro</label>
-                                        <input type="text" name="representante_logradouro" id="representante_logradouro"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="representante_complemento">Complemento</label>
-                                        <input type="text" name="representante_complemento"
-                                            id="representante_complemento" class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="representante_numero">Número</label>
-                                        <input type="text" name="representante_numero" id="representante_numero"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-1">
-                                        <label for="representante_uf">UF</label>
-                                        <input type="text" name="representante_uf" id="representante_uf"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="representante_bairro">Bairro</label>
-                                        <input type="text" name="representante_bairro" id="representante_bairro"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="representante_cidade">Cidade</label>
-                                        <input type="text" name="representante_cidade" id="representante_cidade"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>
+                                        <strong>Observação:</strong>
+                                        Somente conta de Pessoa Juridica,
+                                        de
+                                        preferência nos bancos
+                                        Caixa Econômica Federal, Banco do Brasil, Bradesco, Itaú ou Barrisul(RS)
+                                    </p>
                                 </div>
                             </div>
-                            <!-- FIM :: Tab Representante -->
-
-                            <!-- Tab Empresa -->
-                            <div id="tab_empresa" class="tab-pane">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="empresa_cnpj">CNPJ</label>
-                                        <input type="text" name="empresa_cnpj" id="empresa_cnpj" class="form-control"
-                                            mask="00.000.000/0000-00" readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="empresa_razao_social">Razão Social</label>
-                                        <input type="text" name="empresa_razao_social" id="empresa_razao_social"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="custom-checkbox custom-checkbox-primary">
-                                            <input name="optante" type="checkbox" id="optante">
-                                            <label for="optante" class="margem-top-btn">Optante Simples
-                                                Nacional</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="empresa_insc_municipal">Insc. Municipal</label>
-                                        <input type="text" name="empresa_insc_municipal" id="empresa_insc_municipal"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="empresa_num_alvara">Número Alvará</label>
-                                        <input type="text" name="empresa_num_alvara" id="empresa_num_alvara"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="empresa_emi_alvara">Emissão Alvará</label>
-                                        <input type="text" name="empresa_emi_alvara" id="empresa_emi_alvara"
-                                            class="form-control input_cadastro_rep date-picker">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="empresa_val_alvara">Validade Alvará</label>
-                                        <input type="text" name="empresa_val_alvara" id="empresa_val_alvara"
-                                            class="form-control input_cadastro_rep date-picker">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="empresa_num_core">Número CORE</label>
-                                        <input type="text" name="empresa_num_core" id="empresa_num_core"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="empresa_uf_core">UF CORE</label>
-                                        <input type="text" name="empresa_uf_core" id="empresa_uf_core"
-                                            class="form-control input_cadastro_rep" mask="AA">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="empresa_emissao_core">Emissão CORE</label>
-                                        <input type="text" name="empresa_emissao_core" id="empresa_emissao_core"
-                                            class="form-control input_cadastro_rep date-picker">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="empresa_validade_core">Validade CORE</label>
-                                        <input type="text" name="empresa_validade_core" id="empresa_validade_core"
-                                            class="form-control input_cadastro_rep date-picker">
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h5>Endereço da Empresa</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="empresa_cep">CEP</label>
-                                        <input type="text" name="empresa_cep" id="empresa_cep" class="form-control"
-                                            readonly>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <label for="empresa_logradouro">Logradouro</label>
-                                        <input type="text" name="empresa_logradouro" id="empresa_logradouro"
-                                            class="form-control" readonly>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="empresa_complemento">Complemento</label>
-                                        <input type="text" name="empresa_complemento" id="empresa_complemento"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="empresa_numero">Número</label>
-                                        <input type="text" name="empresa_numero" id="empresa_numero"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <label for="empresa_uf">UF</label>
-                                        <input type="text" name="empresa_uf" id="empresa_uf" class="form-control"
-                                            readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="empresa_bairro">Bairro</label>
-                                        <input type="text" name="empresa_bairro" id="empresa_bairro"
-                                            class="form-control" readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="empresa_cidade">Cidade</label>
-                                        <input type="text" name="empresa_cidade" id="empresa_cidade"
-                                            class="form-control" readonly>
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5>Contador</h5>
                                 </div>
                             </div>
-                            <!-- FIM :: Tab Empresa -->
-
-                            <!-- Tab Outros dados -->
-                            <div id="tab_dados" class="tab-pane">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="dados_banco">Banco</label>
-                                        <input type="text" name="dados_banco" id="dados_banco"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="dados_agencia">Agência</label>
-                                        <input type="text" name="dados_agencia" id="dados_agencia"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="dados_conta">Conta</label>
-                                        <input type="text" name="dados_conta" id="dados_conta"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="dados_operacao">Operação</label>
-                                        <input type="text" name="dados_operacao" id="dados_operacao"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="dados_cpf">CPF</label>
+                                    <input type="text" name="dados_cpf" id="dados_cpf"
+                                           class="form-control input_cadastro_rep" mask="000.000.000-00">
                                 </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h5>Tipo de Conta</h5>
-                                    </div>
+                                <div class="col-md-6">
+                                    <label for="dados_nome">Nome Completo</label>
+                                    <input type="text" name="dados_nome" id="dados_nome"
+                                           class="form-control input_cadastro_rep">
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="custom-radio custom-radio-inline custom-radio-primary">
-                                            <input type="radio" name="empresa_radio" id="dados_tipo_conta">
-                                            <label for="dados_tipo_conta">Conta Corrente</label>
-                                        </div>
-                                        <div class="custom-radio custom-radio-inline custom-radio-primary">
-                                            <input type="radio" name="empresa_radio" id="dados_tipo_conta_radio">
-                                            <label for="dados_tipo_conta_radio">Poupança</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p>
-                                            <strong>Observação:</strong>
-                                            Somente conta de Pessoa Juridica,
-                                            de
-                                            preferência nos bancos
-                                            Caixa Econômica Federal, Banco do Brasil, Bradesco, Itaú ou Barrisul(RS)
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h5>Contador</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="dados_cpf">CPF</label>
-                                        <input type="text" name="dados_cpf" id="dados_cpf"
-                                            class="form-control input_cadastro_rep" mask="000.000.000-00">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="dados_nome">Nome Completo</label>
-                                        <input type="text" name="dados_nome" id="dados_nome"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="dados_crc">CRC</label>
-                                        <input type="text" name="dados_crc" id="dados_crc"
-                                            class="form-control input_cadastro_rep">
-                                    </div>
-                                </div>
-                                <br>
-                                <!-- <div class="row">
-                                    <div class="col-md-12">
-                                        <h5>Para uso Interno</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <label for="dados_empresa">Empresa</label>
-                                        <input type="text" name="dados_empresa" id="dados_empresa" class="form-control"
-                                            readonly>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="dados_macro_regial">Macro Região</label>
-                                        <input type="text" name="dados_macro_regial" id="dados_macro_regial"
-                                            class="form-control" readonly>
-                                    </div>
-                                </div> -->
-                            </div>
-                            <!-- FIM :: Tab Outros dados -->
-
-                            <!-- Tab Documentos -->
-                            <div id="tab_documentos" class="tab-pane">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <string>Carta de Solicitação</string>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <string>Documento de Identificação do Representante</string>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-info">Visualizar</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <string>Documento Bancário</string>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-info">Visualizar</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <string>Core do Representante</string>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-info">Visualizar</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <string>Core da Empresa</string>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-info">Visualizar</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <string>Inscrição Municipal ou Alvará</string>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-info">Visualizar</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <string>Contrato Social</string>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-info">Visualizar</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <string>Comprovante de endereço para correspondência</string>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <button type="button" class="btn btn-info">Visualizar</button>
-                                    </div>
+                                <div class="col-md-3">
+                                    <label for="dados_crc">CRC</label>
+                                    <input type="text" name="dados_crc" id="dados_crc"
+                                           class="form-control input_cadastro_rep">
                                 </div>
                             </div>
-                            <!-- FIM :: Tab Documentos -->
-
-                            <!-- Tab Contratos -->
-                            <div id="tab_contratos" class="tab-pane">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h5>Tablet</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label for="contatos_descritivo">Descritivo</label>
-                                        <input type="text" name="contatos_descritivo" id="contatos_descritivo"
-                                            class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="contratos_nm_serie">Número de Série</label>
-                                        <input type="text" name="contratos_nm_serie" id="contratos_nm_serie"
-                                            class="form-control">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="contratos_nm_patrimonio">Número de Patrimônio</label>
-                                        <input type="text" name="contratos_nm_patrimonio" id="contratos_nm_patrimonio"
-                                            class="form-control">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="contratos_modelo_contrato">Modelo de Contrato</label>
-                                        <input type="text" name="contratos_modelo_contrato"
-                                            id="contratos_modelo_contrato" class="form-control">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <string>Contrato de Comodato</string>
-                                        <br>
-                                        <button class="btn btn-primary" type="button"
-                                            id="contratos_contrato_comodato">Enviar</button>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h5>Contrato de Serviço</h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="contratos_modelo_servico">Modelo de Contrato</label>
-                                        <input type="text" name="contratos_modelo_servico" id="contratos_modelo_servico"
-                                            class="form-control">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <string>Contrato de Serviço</string>
-                                        <br>
-                                        <button class="btn btn-primary" type="button"
-                                            id="contratos_contrato_servico">Enviar</button>
-                                    </div>
+                            <br>
+                            <!-- <div class="row">
+                                <div class="col-md-12">
+                                    <h5>Para uso Interno</h5>
                                 </div>
                             </div>
-                            <!-- FIM :: Tab Contratos -->
-
-                            <!-- TAB Tarefas -->
-                            <div id="tab_tarefas" class="tab-pane">
-                                <div class="row" id="row_vincula_clientes" style="display: none;">
-                                    <div class="custom-checkbox custom-checkbox-primary">
-                                        <input name="vincula_clientes" type="checkbox" id="vincula_clientes">
-                                        <label for="vincula_clientes">Clientes Vinculados</label>
-                                    </div>
-                                    <br>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <label for="dados_empresa">Empresa</label>
+                                    <input type="text" name="dados_empresa" id="dados_empresa" class="form-control"
+                                        readonly>
                                 </div>
-                                <div class="row" id="row_envia_tablet" style="display: none;">
-                                    <div class="custom-checkbox custom-checkbox-primary">
-                                        <input name="envia_tablet" type="checkbox" id="envia_tablet">
-                                        <label for="envia_tablet">Tablet Enviado</label>
-                                    </div>
-                                    <br>
+                                <div class="col-md-3">
+                                    <label for="dados_macro_regial">Macro Região</label>
+                                    <input type="text" name="dados_macro_regial" id="dados_macro_regial"
+                                        class="form-control" readonly>
                                 </div>
-                                <div class="row" id="row_configura_acesso" style="display: none;">
-                                    <div class="custom-checkbox custom-checkbox-primary">
-                                        <input name="configura_acesso" type="checkbox" id="configura_acesso">
-                                        <label for="configura_acesso">Acesso Configurado</label>
-                                    </div>
-                                    <br>
-                                </div>
-                            </div>
-                            <!-- FIM:: TAB Tarefas -->
+                            </div> -->
                         </div>
+                        <!-- FIM :: Tab Outros dados -->
+
+                        <!-- Tab Documentos -->
+                        <div id="tab_documentos" class="tab-pane">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <string>Carta de Solicitação</string>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <string>Documento de Identificação do Representante</string>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-info">Visualizar</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <string>Documento Bancário</string>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-info">Visualizar</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <string>Core do Representante</string>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-info">Visualizar</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <string>Core da Empresa</string>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-info">Visualizar</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <string>Inscrição Municipal ou Alvará</string>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-info">Visualizar</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <string>Contrato Social</string>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-info">Visualizar</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <string>Comprovante de endereço para correspondência</string>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="button" class="btn btn-info">Visualizar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FIM :: Tab Documentos -->
+
+                        <!-- Tab Contratos -->
+                        <div id="tab_contratos" class="tab-pane">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5>Tablet</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="contatos_descritivo">Descritivo</label>
+                                    <input type="text" name="contatos_descritivo" id="contatos_descritivo"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="contratos_nm_serie">Número de Série</label>
+                                    <input type="text" name="contratos_nm_serie" id="contratos_nm_serie"
+                                           class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="contratos_nm_patrimonio">Número de Patrimônio</label>
+                                    <input type="text" name="contratos_nm_patrimonio" id="contratos_nm_patrimonio"
+                                           class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="contratos_modelo_contrato">Modelo de Contrato</label>
+                                    <input type="text" name="contratos_modelo_contrato"
+                                           id="contratos_modelo_contrato" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <string>Contrato de Comodato</string>
+                                    <br>
+                                    <button class="btn btn-primary" type="button"
+                                            id="contratos_contrato_comodato">Enviar
+                                    </button>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5>Contrato de Serviço</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="contratos_modelo_servico">Modelo de Contrato</label>
+                                    <input type="text" name="contratos_modelo_servico" id="contratos_modelo_servico"
+                                           class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <string>Contrato de Serviço</string>
+                                    <br>
+                                    <button class="btn btn-primary" type="button"
+                                            id="contratos_contrato_servico">Enviar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FIM :: Tab Contratos -->
+
+                        <!-- TAB Tarefas -->
+                        <div id="tab_tarefas" class="tab-pane">
+                            <div class="row" id="row_vincula_clientes" style="display: none;">
+                                <div class="custom-checkbox custom-checkbox-primary">
+                                    <input name="vincula_clientes" type="checkbox" id="vincula_clientes">
+                                    <label for="vincula_clientes">Clientes Vinculados</label>
+                                </div>
+                                <br>
+                            </div>
+                            <div class="row" id="row_envia_tablet" style="display: none;">
+                                <div class="custom-checkbox custom-checkbox-primary">
+                                    <input name="envia_tablet" type="checkbox" id="envia_tablet">
+                                    <label for="envia_tablet">Tablet Enviado</label>
+                                </div>
+                                <br>
+                            </div>
+                            <div class="row" id="row_configura_acesso" style="display: none;">
+                                <div class="custom-checkbox custom-checkbox-primary">
+                                    <input name="configura_acesso" type="checkbox" id="configura_acesso">
+                                    <label for="configura_acesso">Acesso Configurado</label>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <!-- FIM:: TAB Tarefas -->
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
 </body>
 
 </html>
