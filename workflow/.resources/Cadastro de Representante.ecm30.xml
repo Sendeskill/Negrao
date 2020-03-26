@@ -9,7 +9,7 @@
     <active>true</active>
     <publicProcess>false</publicProcess>
     <volumeId>Default</volumeId>
-    <categoryId></categoryId>
+    <categoryId>Negrão</categoryId>
     <managerEngineAllocationId></managerEngineAllocationId>
     <snapshotFrequency>0</snapshotFrequency>
     <baseDay>0</baseDay>
@@ -28,10 +28,10 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Cadastro de Representante</processId>
-      <version>2</version>
+      <version>1</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
-    <formId>1388</formId>
+    <formId>1397</formId>
     <editionMode>true</editionMode>
     <updateAttachmentsVersion>false</updateAttachmentsVersion>
     <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
@@ -572,11 +572,23 @@
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
         <expressionOrder>1</expressionOrder>
-        <version>2</version>
+        <version>1</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition></condition>
       <destinationSequenceId>10</destinationSequenceId>
+      <conditionType>1</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>CadastrodeRepresentante</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>1</version>
+        <sequence>8</sequence>
+      </conditionProcessStatePK>
+      <condition></condition>
+      <destinationSequenceId>12</destinationSequenceId>
       <conditionType>1</conditionType>
     </ConditionProcessState>
   </list>
@@ -1086,7 +1098,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>7</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1097,7 +1109,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>13</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1108,7 +1120,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>15</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1119,7 +1131,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>15</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1130,7 +1142,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>24</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1141,7 +1153,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>35</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1152,7 +1164,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>37</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1163,7 +1175,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>41</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1174,7 +1186,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>43</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1185,7 +1197,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>51</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1196,7 +1208,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>51</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1207,7 +1219,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>53</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1218,7 +1230,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>2</version>
+        <version>1</version>
         <linkSequence>53</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1233,5 +1245,24 @@
   <list/>
   <list/>
   <list/>
-  <list/>
+  <list>
+    <ConditionProcessAutomaticRules>
+      <sequence>8</sequence>
+      <expressionOrder>1</expressionOrder>
+      <ruleOrder>1</ruleOrder>
+      <field>representante_selecionado</field>
+      <value>Não</value>
+      <operator>1</operator>
+      <valueType>1</valueType>
+    </ConditionProcessAutomaticRules>
+    <ConditionProcessAutomaticRules>
+      <sequence>8</sequence>
+      <expressionOrder>2</expressionOrder>
+      <ruleOrder>1</ruleOrder>
+      <field>representante_selecionado</field>
+      <value>Sim</value>
+      <operator>1</operator>
+      <valueType>1</valueType>
+    </ConditionProcessAutomaticRules>
+  </list>
 </list>
