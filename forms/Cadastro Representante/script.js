@@ -8,20 +8,39 @@ $(document).ready(function () {
         useCurrent: false
     });
 
-    if (CURRENT_STATE === 0) {
-        $('#indicacao_btn_pesquisar').on('click', function () {
-            const urlCNPJ = 'https://receitaws.com.br/v1/cnpj/34215820000112';
+    if (CURRENT_STATE === 0 || CURRENT_STATE === 1) {
 
-            $.ajax({
-                url: urlCNPJ,
-                contentType: 'application/json',
-                cache: false,
-                method: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                }
-            });
+        $('#indicacao_btn_pesquisar').on('click', function (e) {
+
+            e.preventDefault();
+
+            var cnpj = $('#indicacao_cnpj').val().replace(/[^0-9]/g, '');
+
+            if(cnpj.length == 14) {
+
+                $.ajax({
+                    url:'https://www.receitaws.com.br/v1/cnpj/' + cnpj,
+                    method:'GET',
+                    dataType: 'jsonp', // Em requisições AJAX para outro domínio é necessário usar o formato "jsonp" que é o único aceito pelos navegadores por questão de segurança
+                    complete: function(xhr){
+
+                        response = xhr.responseJSON;
+
+                        if(response.status == 'OK') {
+
+                            // Agora preenchemos os campos com os valores retornados
+                            console.log('response', response)
+                            // Aqui exibimos uma mensagem caso tenha ocorrido algum erro
+                        } else {
+                            alert(response.message); // Neste caso estamos imprimindo a mensagem que a própria API retorna
+                        }
+                    }
+                });
+
+                // Tratativa para caso o CNPJ não tenha 14 caracteres
+            } else {
+                alert('CNPJ inválido');
+            }
         });
 
         $('#representante_cep').on('focusout', function () {
@@ -37,7 +56,8 @@ $(document).ready(function () {
                     $('#representante_cidade').val(data.localidade);
                     $('#representante_rua').val(data.logradouro);
                     $('#representante_uf').val(data.uf);
-                    $('#representante_bairro').val(data.bairro); i8
+                    $('#representante_bairro').val(data.bairro);
+                    i8
 
                 },
                 error: function (erro) {
@@ -92,11 +112,11 @@ $(document).ready(function () {
         //     });
         // });
     } else if (CURRENT_STATE === 12) {
-        $('#btn_aprovar_cadastro').on('click', function() {
+        $('#btn_aprovar_cadastro').on('click', function () {
             $('input[name="cadastro_aprovado"]').val('S');
         });
 
-        $('#btn_recusa_cadastro').on('click', function() {
+        $('#btn_recusa_cadastro').on('click', function () {
             $('input[name="cadastro_aprovado"]').val('N');
         });
     }
