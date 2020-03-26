@@ -21,23 +21,20 @@ $(document).ready(function () {
                 $.ajax({
                     url:'https://www.receitaws.com.br/v1/cnpj/' + cnpj,
                     method:'GET',
-                    dataType: 'jsonp', // Em requisições AJAX para outro domínio é necessário usar o formato "jsonp" que é o único aceito pelos navegadores por questão de segurança
+                    dataType: 'jsonp',
                     complete: function(xhr){
 
                         response = xhr.responseJSON;
 
                         if(response.status == 'OK') {
-
                             // Agora preenchemos os campos com os valores retornados
                             console.log('response', response)
-                            // Aqui exibimos uma mensagem caso tenha ocorrido algum erro
                         } else {
-                            alert(response.message); // Neste caso estamos imprimindo a mensagem que a própria API retorna
+                            alert(response.message);
                         }
                     }
                 });
 
-                // Tratativa para caso o CNPJ não tenha 14 caracteres
             } else {
                 FLUIGC.toast({
                     title: '',
