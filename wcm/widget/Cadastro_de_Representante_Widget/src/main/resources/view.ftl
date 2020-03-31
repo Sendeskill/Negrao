@@ -1,3 +1,4 @@
+<script src="/webdesk/vcXMLRPC.js"></script>
 <div class="fluig-style-guide" id="fluig-style-guide">
     <form name="form" role="form">
         <div class="container-fluid">
@@ -46,7 +47,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="representante_nascimento">Nascimento</label>
+                                    <label for="representante_nascimento">Data de Nascimento</label>
                                     <input type="text" name="representante_nascimento" id="representante_nascimento"
                                         class="form-control date-picker">
                                 </div>
@@ -75,7 +76,7 @@
                                         class="form-control">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="representante_celular">Celular</label>
+                                    <label for="representante_celular">Telefone 2 / Celular</label>
                                     <input type="text" name="representante_celular" id="representante_celular"
                                         class="form-control">
                                 </div>
@@ -176,12 +177,12 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="custom-radio custom-radio-inline custom-radio-primary">
-                                        <input type="radio" name="empresa_radio" id="dados_tipo_conta">
-                                        <label for="dados_tipo_conta">Conta Corrente</label>
+                                        <input type="radio" name="tipo_conta" id="dados_tipo_conta_corr">
+                                        <label for="dados_tipo_conta_corr">Conta Corrente</label>
                                     </div>
                                     <div class="custom-radio custom-radio-inline custom-radio-primary">
-                                        <input type="radio" name="empresa_radio" id="dados_tipo_conta_radio">
-                                        <label for="dados_tipo_conta_radio">Poupança</label>
+                                        <input type="radio" name="tipo_conta" id="dados_tipo_conta_poup">
+                                        <label for="dados_tipo_conta_poup">Poupança</label>
                                     </div>
                                 </div>
                             </div>

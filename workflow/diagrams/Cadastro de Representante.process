@@ -3165,7 +3165,7 @@
     <fonts name="Arial" size="8"/>
     <fonts name="Arial" size="8" bold="true"/>
   </pi:Diagram>
-  <bpmn2:BpmnProcess id="CadastrodeRepresentante" name="Cadastro de Representante" serverId="Planning" version="4" author="" extendedFields="&lt;list/>" cardIndex="1397" formSource="server" category="Negr&#xe3;o" volume="Default" expedient="Default" instruction="" keyWord="" complementsLevel="1" notifyResponsibleComplements="true" notifyRequisitionerComplements="true"/>
+  <bpmn2:BpmnProcess id="CadastrodeRepresentante" name="Cadastro de Representante" serverId="Planning" version="7" author="" extendedFields="&lt;list/>" cardIndex="1397" formSource="server" category="Negr&#xe3;o" volume="Default" expedient="Default" instruction="" keyWord="" complementsLevel="1" notifyResponsibleComplements="true" notifyRequisitionerComplements="true"/>
   <bpmn2:BpmnStartEvent id="startevent1" name="In&#xed;cio" incoming="flow3 flow5" outgoing="flow7" type="10" signalId="0" expediente="" selecionaColaboradores="1" esforcoCalculo="0"/>
   <bpmn2:BpmnAnnotation id="annotationtask2" name="Indicar novo representante" outgoing="flow3" type="0"/>
   <bpmn2:SequenceFlow id="flow3" name="" sourceRef="annotationtask2" targetRef="startevent1" atividadeFluxo="" extendedFields="&lt;list/>"/>

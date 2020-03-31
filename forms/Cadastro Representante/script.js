@@ -168,6 +168,7 @@ function hideAndShowFields() {
         $('#toggle_tarefas').hide();
     } else if (CURRENT_STATE === 6) {
         $('#row_aprova_representante').show();
+        $('#toggle_representante').hide();
         $('#toggle_empresa').hide();
         $('#toggle_dados').hide();
         $('#toggle_documentos').hide();

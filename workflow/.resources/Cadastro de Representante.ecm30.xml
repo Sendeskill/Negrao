@@ -28,7 +28,7 @@
     <processDefinitionVersionPK>
       <companyId>1</companyId>
       <processId>Cadastro de Representante</processId>
-      <version>4</version>
+      <version>7</version>
     </processDefinitionVersionPK>
     <versionDescription></versionDescription>
     <formId>1397</formId>
@@ -572,7 +572,7 @@
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
         <expressionOrder>1</expressionOrder>
-        <version>4</version>
+        <version>7</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition></condition>
@@ -584,7 +584,7 @@
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
         <expressionOrder>2</expressionOrder>
-        <version>4</version>
+        <version>7</version>
         <sequence>8</sequence>
       </conditionProcessStatePK>
       <condition></condition>
@@ -765,7 +765,49 @@
     </ProcessLink>
   </list>
   <list/>
-  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskComplete</eventId>
+        <processId>CadastrodeRepresentante</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskComplete(colleagueId, nextSequenceId, userList) {&#xd;
+    // Envia e-mail ao representante&#xd;
+    if (nextSequenceId == 12) {&#xd;
+        try {&#xd;
+            //Monta mapa com parâmetros do template&#xd;
+            var parametros = new java.util.HashMap();&#xd;
+            parametros.put(&quot;RAZAO_EMPRESA&quot;, hAPI.getCardValue(&quot;empresa_razao_social&quot;));&#xd;
+            parametros.put(&quot;URL_FLUIG&quot;, &quot;http://fluig.teste.voxelz.com.br/portal/001/Cadastro_Representante&quot;);&#xd;
+            parametros.put(&quot;TOKEN_PROCESSO&quot;, hAPI.getCardValue(&quot;token_widget&quot;));&#xd;
+            parametros.put(&quot;NUM_PROCESSO&quot;, hAPI.getCardValue(&quot;id_processo&quot;));&#xd;
+&#xd;
+            //Este parâmetro é obrigatório e representa o assunto do e-mail&#xd;
+            parametros.put(&quot;subject&quot;, &quot;Negrão - Cadastro de Representante&quot;);&#xd;
+&#xd;
+            //Monta lista de destinatários&#xd;
+            var destinatarios = new java.util.ArrayList();&#xd;
+            destinatarios.add(hAPI.getCardValue(&quot;indicacao_email&quot;));&#xd;
+&#xd;
+            log.dir(&apos;ARRAYS LUCAS&apos;);&#xd;
+            log.dir(getValue(&quot;WKUser&quot;));&#xd;
+            log.dir(parametros);&#xd;
+            log.dir(destinatarios);&#xd;
+            log.dir(hAPI.getCardValue(&quot;indicacao_email&quot;));&#xd;
+            log.dir(&quot;FIM&quot;);&#xd;
+            &#xd;
+            //Envia e-mail&#xd;
+            notifier.notify(getValue(&quot;WKUser&quot;), &quot;cadastro_representante_email&quot;, parametros, destinatarios, &quot;text/html&quot;);&#xd;
+        } catch (e) {&#xd;
+            log.dir(&apos;ERRO EMAIL VISH&apos;);&#xd;
+            log.dir(e);&#xd;
+        }&#xd;
+    }&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
   <list/>
   <list>
     <SwimLane>
@@ -1098,7 +1140,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>7</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1109,7 +1151,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>13</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1120,7 +1162,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>15</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1131,7 +1173,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>15</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1142,7 +1184,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>24</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1153,7 +1195,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>35</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1164,7 +1206,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>37</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1175,7 +1217,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>41</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1186,7 +1228,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>43</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1197,7 +1239,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>51</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1208,7 +1250,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>51</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
@@ -1219,7 +1261,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>53</linkSequence>
         <bendSequence>1</bendSequence>
       </processLinkBendPK>
@@ -1230,7 +1272,7 @@
       <processLinkBendPK>
         <companyId>1</companyId>
         <processId>CadastrodeRepresentante</processId>
-        <version>4</version>
+        <version>7</version>
         <linkSequence>53</linkSequence>
         <bendSequence>2</bendSequence>
       </processLinkBendPK>
