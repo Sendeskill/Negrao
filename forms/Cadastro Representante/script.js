@@ -20,6 +20,7 @@ $(document).ready(function () {
                 $.ajax({
                     url: 'https://www.receitaws.com.br/v1/cnpj/' + cnpj,
                     method: 'GET',
+                    headers
                     dataType: 'jsonp',
                     complete: function (xhr) {
 

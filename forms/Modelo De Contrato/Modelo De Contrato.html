@@ -1,0 +1,30 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script src="/style-guide/js/fluig-style-guide-richeditor.min.js"></script>
+    <script src="./script.js"></script>
+</head>
+<body>
+<div id="fluig-style-guide" class="fluig-style-guide">
+    <form name="form" role="form">
+
+        <input type='hidden' id='conteudo_editor' name='conteudo_editor'>
+
+        <div style="margin-bottom: 50px">
+            <label for="nome_modelo">
+				<strong>Nome do Modelo</strong>
+			</label>
+            <input type="text" id="nome_modelo" name="nome_modelo" class="form-control">
+        </div>
+
+        <textarea name="editor" id="editor"></textarea>
+
+        <button id='salvar' class='btn btn-info'>salvar</button>
+    </form>
+</div>
+</body>
+</html>
