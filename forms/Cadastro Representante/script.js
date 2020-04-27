@@ -20,7 +20,9 @@ $(document).ready(function () {
                 $.ajax({
                     url: 'https://www.receitaws.com.br/v1/cnpj/' + cnpj,
                     method: 'GET',
-                    headers
+                    headers: {
+                        'access_token':'9cb3bd1f-f3e7-4acf-9e87-c1e92996b696'
+                    },
                     dataType: 'jsonp',
                     complete: function (xhr) {
 
