@@ -15,13 +15,6 @@ function afterTaskComplete(colleagueId, nextSequenceId, userList) {
             //Monta lista de destinatários
             var destinatarios = new java.util.ArrayList();
             destinatarios.add(hAPI.getCardValue("indicacao_email"));
-
-            log.dir('ARRAYS LUCAS');
-            log.dir(getValue("WKUser"));
-            log.dir(parametros);
-            log.dir(destinatarios);
-            log.dir(hAPI.getCardValue("indicacao_email"));
-            log.dir("FIM");
             
             //Envia e-mail
             notifier.notify(getValue("WKUser"), "cadastro_representante_email", parametros, destinatarios, "text/html");

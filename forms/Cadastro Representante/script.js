@@ -114,6 +114,9 @@ function beforeSendValidate(currentStage, nextStage) {
         if ($('select[name="indicacao_empresa"]').val() == '') {
             msg += "É necessário selecionar a <strong>Empresa</strong>.<br>";
         }
+        if ($('input[name="indicacao_email"]').val() == '') {
+            msg += "É necessário preencher o campo <strong>E-mail</strong>.<br>";
+        }
     } else if (CURRENT_STATE === 6) {
         if ($('input[name="representante_selecionado"]').is(':checked') === false) {
             msg += "É necessário marcar o campo <strong>Representante Selecionado</strong>.";
